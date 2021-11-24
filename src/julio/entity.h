@@ -1,5 +1,7 @@
 //
 // Created by Julio on 24/11/2021.
+/*Header de création d'entité
+ */
 //
 
 #ifndef BASH_ADVENTURE_ENTITY_H

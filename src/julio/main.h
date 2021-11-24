@@ -4,7 +4,7 @@
 
 #ifndef BASH_ADVENTURE_MAIN_H
 #define BASH_ADVENTURE_MAIN_H
-/INCLUDE----------------------------------------------------------------//
+//INCLUDE----------------------------------------------------------------//
 #include "stdlib.h"
 #include "stdio.h"
 #include "string.h"

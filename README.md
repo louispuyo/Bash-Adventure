@@ -22,10 +22,9 @@
                 \bin
                     main (executable)
 
-                \lib
-                    SDL\...
 
-                \tests
+
+                \test
 
                 README.md
                 commands.md

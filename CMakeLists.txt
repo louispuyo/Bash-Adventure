@@ -26,4 +26,4 @@ add_executable(Bash_Adventure0
         src/main.c
         test/test.md
         README.md
-        requirements.md)
+        requirements.md src/Julio/main.c src/Julio/main.h src/main.h)

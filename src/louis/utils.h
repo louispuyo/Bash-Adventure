@@ -11,6 +11,40 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h>
+#include <math.h>
+
+#define _MEMORY_SIZE_ 40
+
+typedef struct{
+    int score;
+    int weight;
+    int *id;
+} Action;
+
+
+
+typedef struct {
+  double x;
+  double y;
+
+} Point;
+
+
+double sigmoid (double x)
+{
+  double res;
+  res = 1./(1-exp(-x));
+  return res;
+} 
+
+
+
+float distance_euclidienne(Point a, Point b)
+{
+  float dist;
+  dist = sqrt((pow(a.x,2)-pow(b.x,2))-(pow(a.y,2)-pow(b.y,2)));
+  return dist;
+}
 
 
 char* concat(const char *s1, const char *s2)
@@ -29,5 +63,6 @@ void* malloc_p(size_t s){ //malloc protegé
 
   return p;
 }
+
 
 #endif

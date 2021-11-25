@@ -95,7 +95,7 @@ char* charger_partie(char *filename)
         printf("[!] LE FICHIER N'EXISTE PAS OU ERREUR LORS DE SON OUVERTURE ! \n");
         exit(EXIT_FAILURE);
         }
-    return Conteneur;
+    return Conteneur; // devra etre recuperer par le joueur lors de son initialisation
 }
 
 ///  MENU ///
@@ -151,6 +151,7 @@ void menu_sauvegarde(char *nom,
 
 int main(int argc, char const *argv[])
 {
+
+
     menu_sauvegarde("louis", "perso de test", 100, 100, 0, 1, 100, 0, 50, 200); // exemple
     return 0;
-}

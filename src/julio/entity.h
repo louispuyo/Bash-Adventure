@@ -9,17 +9,6 @@
 //INCLUDE----------------------------------------------------------------//
 #include "main.h"
 //--------------------------------------------------------------------------//
-//CONSTANTES----------------------------------------------------------------//
-#define VIE_MIN int 0;
-#define VIE_MAX ;
-#define XP_MIN int 0;
-#define XP_MAX int 100;
-#define LVL_MIN int 0;
-#define LVL_MAX int 100;
-#define MONEY_MIN int 0;
-#define MONEY_MAX int 100;
-//--------------------------------------------------------------------------//
-
 typedef struct Entity Entity;//Struct Entity
 struct Entity {
     char *nom;//nom de l'Entity
@@ -38,6 +27,16 @@ struct Entity {
 
     Entity *suivant;
 };
+//CONSTANTES----------------------------------------------------------------//
+#define VIE_MIN int 0;
+#define VIE_MAX ;
+#define XP_MIN int 0;
+#define XP_MAX int 100;
+#define LVL_MIN int 0;
+#define LVL_MAX int 100;
+#define MONEY_MIN int 0;
+#define MONEY_MAX int 100;
+//--------------------------------------------------------------------------//
 
 //POUR ENTITY----------------------------------------------------------------//
 //<fonction qui affiche> simple pointeur "void func(*args){}"
@@ -141,7 +140,6 @@ void modItAtk(Entity **pEntity,int ptr){
 void modItDef(Entity **pEntity,int ptr){
     (*pEntity)->def = ptr;
 }
-
 // Fonction Mod Pos
 /// \param pEntity
 /// \param ptrx, ptry
@@ -149,7 +147,6 @@ void modItPos(Entity **pEntity,int ptrx,int ptry){
     (*pEntity)->pos_x = ptrx;
     (*pEntity)->pos_y = ptry;
 }
-
 // Fonction Mod Speed
 /// \param pEntity
 /// \param ptrx, ptry

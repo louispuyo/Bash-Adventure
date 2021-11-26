@@ -6,6 +6,7 @@
 #define BASH_ADVENTURE_PLAYER_H
 //INCLUDE-------------------------------------------------------------------//
 #include "main.h"
+#elif defined(BASH_ADVENTURE_PLAYER_H)
 #include "entity.h"
 //--------------------------------------------------------------------------//
 //CONSTANTES----------------------------------------------------------------//
@@ -31,7 +32,6 @@ void initWarrior(Entity **pEntity){
     modItMoney(pEntity,5);
     modItAtk(pEntity,2);
     modItDef(pEntity,2);
-
 
 }
 /// Initialise un Mob de type Lezard

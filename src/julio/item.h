@@ -7,9 +7,6 @@
 //INCLUDE----------------------------------------------------------------//
 #include "main.h"
 //--------------------------------------------------------------------------//
-//CONSTANTES----------------------------------------------------------------//
-#define char *poids[3]{"zero","leger","moyen","lourd"};//constantes des poids
-//--------------------------------------------------------------------------//
 typedef struct Item Item;//Struct Item
 struct Item {
     char *nom;//nom de l'Item
@@ -18,7 +15,9 @@ struct Item {
     int (*options);
     Item *suivant;
 };
-
+//CONSTANTES----------------------------------------------------------------//
+#define char *poids[3]{"zero","leger","moyen","lourd"};//constantes des poids
+//--------------------------------------------------------------------------//
 //POUR ITEM-----------------------------------------------------------------//
 //<fonction qui affiche> simple pointeur "void func(*args){}"
 //<fonction qui agit> double pointeur "void func(**args){}"
@@ -26,13 +25,14 @@ struct Item {
 // "void (*func)(*args){}"
 
 //fonction pour initaliser
-void initIt(Item **pItem){
+void initItem(Item **pItem){
     if(!(*pItem=(Item*) malloc(sizeof(Item)))){ exit(-1);}
     (*pItem)->nom     = 0;
     (*pItem)->des     = 0;
     (*pItem)->place   = 0;
     (*pItem)->options = 0;
     (*pItem)->suivant = NULL;
+    printf("InitItem");
 }
 //fonction pour ajouter au debut
 //fonction pour ajouter a la fin
@@ -42,5 +42,26 @@ void initIt(Item **pItem){
 //fonction pour retrouver
 //fonction pour trier alphabetiquement (si vous etes chaud)
 //fonction pour modifier
+
+//MENU UTILISATION----------------------------------------------------------//
+void menu(int i){
+    switch (i) {
+        case 1:
+            printf("Ut1");
+            break;
+        case 2:
+            printf("Ut2");
+            break;
+        case 3:
+            printf("Ut3");
+            break;
+        case 4:
+            printf("Ut4");
+            break;
+        default:
+            break;
+    }
+}
+//--------------------------------------------------------------------------//
 //--------------------------------------------------------------------------//
 #endif //BASH_ADVENTURE_ITEM_H

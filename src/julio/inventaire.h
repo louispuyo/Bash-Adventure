@@ -6,7 +6,8 @@
 #define BASH_ADVENTURE_INVENTAIRE_H
 //INCLUDE----------------------------------------------------------------//
 #include "main.h"
-#include "item.h"
+#elif defined(BASH_ADVENTURE_INVENTAIRE_H)
+    #include "item.h"
 //--------------------------------------------------------------------------//
 
 //CONSTANTES----------------------------------------------------------------//

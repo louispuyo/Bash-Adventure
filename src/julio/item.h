@@ -15,7 +15,8 @@ struct Item {
     char *nom;//nom de l'Item
     char *des;//description de l'Item
     int *place;//niveau d'encombrement de l'item 1=léger 2=moyen 3=lourd
-    void (*funcItem)(int);//pointeur sur fonction
+    void (*funcItem)(int i);//pointeur sur
+    // fonction
     Item *suivant;
 };
 //CONSTANTES----------------------------------------------------------------//
@@ -25,19 +26,20 @@ struct Item {
 void menuIte(int i){
     switch (i) {
         case 1:
-            printf("Utiliser");
+            printf("Utiliser\n");
+
             break;
         case 2:
-            printf("Donner");
+            printf("Donner\n");
             break;
         case 3:
-            printf("Lacher");
+            printf("Lacher\n");
             break;
         case 4:
-            printf("Détruire");
+            printf("\n");
             break;
         default:
-            printf("Somehow you fucked up...");//A CHANGER
+            printf("Somehow you fucked up...\n");//A CHANGER
             break;
     }
 }
@@ -69,8 +71,8 @@ void initItem(Item **pItem){
 
 //POINTEUR SUR FONCTION------------------------------------------------------//
 ///Fonction qui appelle un pointeur de fonction pour utiliser l'item
-/// \param pItem
-void choixIt(Item **pItem){
+/// \param pItem//A REVOIR
+void choixIt(Item **pItem,Entity **pEntity){
     int i;
     printf("Choix...[1:4]\n");
     scanf("%d",&i);

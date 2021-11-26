@@ -50,8 +50,32 @@ struct Entity {
 //<fonction qui sert d'option> pointeur de fonction "(*option)(*args)"
 // "void (*func)(*args){}"
 
+
+//fonction d'interaction
+//MENU INTERACTIONS----------------------------------------------------------//
+void menuInter(int i){
+    switch (i) {
+        case 1:
+            printf("Attaquer\n");
+
+            break;
+        case 2:
+            printf("Objet\n");
+            break;
+        case 3:
+            printf("Inventaire\n");
+            break;
+        case 4:
+            printf("Fuire\n");
+            break;
+        default:
+            printf("Somehow you fucked up...\n");//A CHANGER
+            break;
+    }
+}
+
 //fonction pour initaliser
-void initIt(Entity **pEntity) {
+void initEnt(Entity **pEntity) {
     if (!(*pEntity = (Entity *) malloc(sizeof(Entity)))) { exit(-1); }
     (*pEntity)->nom = 0;
     (*pEntity)->des = 0;
@@ -60,13 +84,13 @@ void initIt(Entity **pEntity) {
     (*pEntity)->xp = 0;
     (*pEntity)->level = 0;
     (*pEntity)->money = 0;
-    //(*pEntity)->action = 0;
     (*pEntity)->atk = 0;
     (*pEntity)->def = 0;
     (*pEntity)->pos_x=0;
     (*pEntity)->pos_y=0;
     (*pEntity)->speed_x=0;
     (*pEntity)->speed_y=0;
+    (*pEntity)->funcInter=menuInter;
 
     (*pEntity)->suivant = NULL;
     printf("InitEntity\n");
@@ -163,10 +187,16 @@ void modItSpeed(Entity **pEntity,int ptrx,int ptry){
 
 //--------------------------------------------------------------------------//
 
-//fonction d'interaction
-//MENU INTERACTIONS----------------------------------------------------------//
-//--POINTEUR SUR FONCTION----------------------------------------------------//
 
+//--------------------------------------------------------------------------//
+///Fonction qui appelle un pointeur de fonction pour utiliser l'item
+/// \param pItem//A REVOIR
+void choixInter(Entity **pEntity){
+    int i;
+    printf("Choix...[1:4]\n");
+    scanf("%d",&i);
+    (*pEntity)->funcInter(i);
+}
 //EXEMPLE DE POINTEUR SUR FONCTION
 
 //FONCTION

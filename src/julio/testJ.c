@@ -14,10 +14,12 @@
 #include "item.h"
 //INITIALISATION-------------------------------------------------------------//
 void initialisation(){
-    //Entity *e,*e2;
+    Entity *e,*e2;
     Item *item;
     initItem(&item);
-    choixIt(&item);
+    choixIt(&item,&e);
+    initEnt(&e);
+    choixInter(&e);
 
 //    initSlime(&e);
 //    initLizard(&e2);

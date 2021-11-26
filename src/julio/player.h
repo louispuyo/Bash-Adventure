@@ -24,7 +24,7 @@
 /// Initialise un Mob de type Slime
 /// \param pEntity
 void initWarrior(Entity **pEntity){
-    initIt(pEntity);
+    initEnt(pEntity);
     modItName(pEntity,"\"Jean\"");
     modItDes(pEntity,"\"Warrior\"");//par exemple
     modItPv(pEntity,10);
@@ -39,7 +39,7 @@ void initWarrior(Entity **pEntity){
 /// Initialise un Mob de type Lezard
 /// \param pEntity
 void initWizard(Entity **pEntity){
-    initIt(pEntity);
+    initEnt(pEntity);
     modItName(pEntity,"\"Harry\"");
     modItDes(pEntity,"\"Wizard\"");
     modItPv(pEntity,10);
@@ -53,7 +53,7 @@ void initWizard(Entity **pEntity){
 /// Initialise un Mob de type Loup
 /// \param pEntity
 void initBandit(Entity **pEntity){
-    initIt(pEntity);
+    initEnt(pEntity);
     modItName(pEntity,"\"Rinaldo\"");
     modItDes(pEntity,"\"Bandit\"");
     modItPv(pEntity,10);

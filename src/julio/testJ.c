@@ -2,7 +2,10 @@
 // Created by admin on 24/11/2021.
 //
 //INCLUDE--------------------------------------------------------------------//
-#include "main.h"
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
+#include "malloc.h"
 #include "entity.h"
 #include "mob.h"
 #include "actions.h"
@@ -11,9 +14,11 @@
 #include "item.h"
 //INITIALISATION-------------------------------------------------------------//
 void initialisation(){
-    Entity *e,*e2;
+    //Entity *e,*e2;
     Item *item;
     initItem(&item);
+    choixIt(&item);
+
 //    initSlime(&e);
 //    initLizard(&e2);
 //    initWarrior(&e);

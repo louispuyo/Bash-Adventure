@@ -5,8 +5,10 @@
 #ifndef BASH_ADVENTURE_PLAYER_H
 #define BASH_ADVENTURE_PLAYER_H
 //INCLUDE-------------------------------------------------------------------//
-#include "main.h"
-#elif defined(BASH_ADVENTURE_PLAYER_H)
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
+#include "malloc.h"
 #include "entity.h"
 //--------------------------------------------------------------------------//
 //CONSTANTES----------------------------------------------------------------//

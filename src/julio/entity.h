@@ -7,7 +7,10 @@
 #ifndef BASH_ADVENTURE_ENTITY_H
 #define BASH_ADVENTURE_ENTITY_H
 //INCLUDE----------------------------------------------------------------//
-#include "main.h"
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
+#include "malloc.h"
 //--------------------------------------------------------------------------//
 typedef struct Entity Entity;//Struct Entity
 struct Entity {
@@ -24,6 +27,9 @@ struct Entity {
     int pos_y;
     int speed_x;
     int speed_y;
+
+
+    void (*funcInter)(int);//pointeur sur fonction
 
     Entity *suivant;
 };
@@ -158,8 +164,8 @@ void modItSpeed(Entity **pEntity,int ptrx,int ptry){
 //--------------------------------------------------------------------------//
 
 //fonction d'interaction
-
-
+//MENU INTERACTIONS----------------------------------------------------------//
+//--POINTEUR SUR FONCTION----------------------------------------------------//
 
 //EXEMPLE DE POINTEUR SUR FONCTION
 

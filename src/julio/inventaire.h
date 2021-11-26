@@ -5,9 +5,11 @@
 #ifndef BASH_ADVENTURE_INVENTAIRE_H
 #define BASH_ADVENTURE_INVENTAIRE_H
 //INCLUDE----------------------------------------------------------------//
-#include "main.h"
-#elif defined(BASH_ADVENTURE_INVENTAIRE_H)
-    #include "item.h"
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
+#include "malloc.h"
+#include "item.h"
 //--------------------------------------------------------------------------//
 
 //CONSTANTES----------------------------------------------------------------//

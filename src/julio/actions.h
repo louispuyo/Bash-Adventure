@@ -5,8 +5,11 @@
 #ifndef BASH_ADVENTURE_ACTIONS_H
 #define BASH_ADVENTURE_ACTIONS_H
 //INCLUDE-------------------------------------------------------------------//
-#include "main.h"
-#elif defined(BASH_ADVENTURE_ACTIONS_H)
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
+#include "malloc.h"
+//#elif defined(BASH_ADVENTURE_ACTIONS_H)
 #include "entity.h"
 //--------------------------------------------------------------------------//
 //CONSTANTES----------------------------------------------------------------//
@@ -28,7 +31,7 @@ void EntAttack(Entity *from,Entity**to){
     printf("%s lost %d pv\n",(*to)->nom,(from->atk));
 }
 //MENU ATTAQUE---------------------------------------------------------------//
-void menu(int i){
+void menuAttack(int i){
     switch (i) {
         case 1:
             printf("Op1");
@@ -47,6 +50,11 @@ void menu(int i){
     }
 }
 //--------------------------------------------------------------------------//
-
+void choixAtk(Entity **pEntity){
+    int i;
+    printf("Choix...[1:4]\n");
+    scanf("%d",&i);
+    (*pEntity)->funcInter(i);
+}
 //--------------------------------------------------------------------------//
 #endif //BASH_ADVENTURE_ACTIONS_H

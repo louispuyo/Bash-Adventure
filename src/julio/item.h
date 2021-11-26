@@ -5,18 +5,42 @@
 #ifndef BASH_ADVENTURE_ITEM_H
 #define BASH_ADVENTURE_ITEM_H
 //INCLUDE----------------------------------------------------------------//
-#include "main.h"
+#include "stdlib.h"
+#include "stdio.h"
+#include "string.h"
+#include "malloc.h"
 //--------------------------------------------------------------------------//
 typedef struct Item Item;//Struct Item
 struct Item {
     char *nom;//nom de l'Item
     char *des;//description de l'Item
     int *place;//niveau d'encombrement de l'item 1=léger 2=moyen 3=lourd
-    int (*options);
+    void (*funcItem)(int);//pointeur sur fonction
     Item *suivant;
 };
 //CONSTANTES----------------------------------------------------------------//
 #define char *poids[3]{"zero","leger","moyen","lourd"};//constantes des poids
+//--------------------------------------------------------------------------//
+//MENU UTILISATION----------------------------------------------------------//
+void menuIte(int i){
+    switch (i) {
+        case 1:
+            printf("Utiliser");
+            break;
+        case 2:
+            printf("Donner");
+            break;
+        case 3:
+            printf("Lacher");
+            break;
+        case 4:
+            printf("Détruire");
+            break;
+        default:
+            printf("Somehow you fucked up...");//A CHANGER
+            break;
+    }
+}
 //--------------------------------------------------------------------------//
 //POUR ITEM-----------------------------------------------------------------//
 //<fonction qui affiche> simple pointeur "void func(*args){}"
@@ -30,9 +54,9 @@ void initItem(Item **pItem){
     (*pItem)->nom     = 0;
     (*pItem)->des     = 0;
     (*pItem)->place   = 0;
-    (*pItem)->options = 0;
     (*pItem)->suivant = NULL;
-    printf("InitItem");
+    (*pItem)->funcItem = menuIte;
+    printf("InitItem\n");
 }
 //fonction pour ajouter au debut
 //fonction pour ajouter a la fin
@@ -43,25 +67,14 @@ void initItem(Item **pItem){
 //fonction pour trier alphabetiquement (si vous etes chaud)
 //fonction pour modifier
 
-//MENU UTILISATION----------------------------------------------------------//
-void menu(int i){
-    switch (i) {
-        case 1:
-            printf("Ut1");
-            break;
-        case 2:
-            printf("Ut2");
-            break;
-        case 3:
-            printf("Ut3");
-            break;
-        case 4:
-            printf("Ut4");
-            break;
-        default:
-            break;
-    }
+//POINTEUR SUR FONCTION------------------------------------------------------//
+///Fonction qui appelle un pointeur de fonction pour utiliser l'item
+/// \param pItem
+void choixIt(Item **pItem){
+    int i;
+    printf("Choix...[1:4]\n");
+    scanf("%d",&i);
+    (*pItem)->funcItem(i);
 }
-//--------------------------------------------------------------------------//
 //--------------------------------------------------------------------------//
 #endif //BASH_ADVENTURE_ITEM_H

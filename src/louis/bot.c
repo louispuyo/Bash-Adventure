@@ -1,6 +1,6 @@
 /*
-    Louis : 25/11/2021 : bot.h 
-    description : fichier definissant le comportement des bots dans le jeu 
+    Louis : 25/11/2021 : Entity.h 
+    description : fichier definissant le comportement des Entitys dans le jeu 
 
 
 
@@ -33,79 +33,131 @@ répéter
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+// #include <math.h>
+#include <unistd.h>
 #include "utils.h"
+
+#include "../julio/player.h"
 #include "../julio/entity.h"
 #include "../julio/player.h"
+#include "../julio/mob.h"
 #define _MEMORY_SIZE_ 40
+#define symbole "@"
+#define player_symbole "A"
 
 
+#define couleur(param) printf("\033[%sm",param)
 
-// PROTOTYPE SI ON A LE TEMPS // 
-typedef struct 
-{
-    float input;
-    float output;
-
-    /* data */
-} Node;
-
-
-typedef struct 
-{
-    Node *List[_MEMORY_SIZE_];
-
-
-} Network;
-
-
-// FIN PROTOTYPE
-
-// ACTION POSSIBLE
-
-enum actions_liste { // poids de probabilitee de chaques actions du bot
-    droite = 0,
-    gauche = 0,
-    haut = 0,
-    bas = 0,
-    attaque = 0 ,
-    defense = 0 
-
-};
-
-// typedef struct{
-//     int score;
-//     int weight;
-//     int *id;
-// } Action;
 
 
 
 typedef struct {
     Entity base; // base 
-    int pos_x;
-    int pos_y;
+
     double score;
-   
+    Action *list_action;
+
+} Player;
+
+
+typedef struct { int y; int x; } Coords;
+
+
+
+
+void initialisation_actions(Entity entity); // attribut les poids pour chaque action
+
+
+void deplacement(Entity* entity)
+{
+int largeur = 30;
+
+
+
+
+for(int j=0; j<20; j++){
+    printf("\n");
+
+for(int i=0; i<largeur; i++){
     
+    if (i== entity->pos_x && j == entity->pos_y) 
+    {
+        printf("%s", symbole);
+        
 
+    }
+    else{
+       
+
+    printf("%s", ".");
     
-
-} Bot;
-
-void initialisation_actions(Bot bot); // attribut les poids pour chaque action
-
-
-void deplacement(Bot* bot);
-
-
-int main(int argc, char const *argv[])
-{   
-    Bot *bot;
+    }
     
     
-    
-    
+}
+}
 
+}
+
+
+void deplacement_du_bot(Entity *bot)
+{
+      int x = bot->pos_x + bot->speed_x;
+      int y = bot->pos_y + bot->speed_y;
+      modItPos(&bot, x, y);
+      printf("%d %d \n\n",x,y );
+     
+}
+
+int beta (Entity *entity)
+
+{
+           int *decision;
+
+
+          
+         
+       while (*decision != 0)
+    {
+
+     
+    
+    deplacement(entity);
+    deplacement_du_bot(entity);
+    scanf("%d", decision);
+    system("clear");
+    menuInter(*decision);
+    
+  
+
+    }
+    
+    
     return 0;
+        
+	}
+
+
+  
+    
+    
+
+
+
+
+
+
+int main() {
+
+    Entity *entity;
+    
+    initEnt(&entity);
+    modItSpeed(&entity, 1, 1);
+    modItPos(&entity, 3, 3);
+ 
+
+
+	beta(entity);
+    
+	return EXIT_SUCCESS;
 }

@@ -14,13 +14,13 @@ typedef struct Item Item;//Struct Item
 struct Item {
     char *nom;//nom de l'Item
     char *des;//description de l'Item
-    int *place;//niveau d'encombrement de l'item 1=léger 2=moyen 3=lourd
+    int place;//niveau d'encombrement de l'item 1=léger 2=moyen 3=lourd
     void (*funcItem)(int i);//pointeur sur
     // fonction
     Item *suivant;
 };
 //CONSTANTES----------------------------------------------------------------//
-#define char *poids[3]{"zero","leger","moyen","lourd"};//constantes des poids
+#define poids [3]{"zero","leger","moyen","lourd"};//constantes des poids
 //--------------------------------------------------------------------------//
 //MENU UTILISATION----------------------------------------------------------//
 void menuIte(int i){
@@ -60,19 +60,30 @@ void initItem(Item **pItem){
     (*pItem)->funcItem = menuIte;
     printf("InitItem\n");
 }
+
 //fonction pour ajouter au debut
+
 //fonction pour ajouter a la fin
+
 //fonction pour afficher
+void afficheItem(Item *item){
+    printf("item->nom : %s\n",item->nom);  // ni espace ni saut de ligne !
+    printf("item->des : %s\n",item->des);
+    printf("item->place : %d\n",item->place);
+    if(item->suivant){ printf("suivant : %s\n",item->suivant->nom);}
+}
+
 //fonction pour supprimer au debut
 //fonction pour supprimer a la fin
 //fonction pour retrouver
+
 //fonction pour trier alphabetiquement (si vous etes chaud)
 //fonction pour modifier
 
 //POINTEUR SUR FONCTION------------------------------------------------------//
 ///Fonction qui appelle un pointeur de fonction pour utiliser l'item
 /// \param pItem//A REVOIR
-void choixIt(Item **pItem,Entity **pEntity){
+void choixIt(Item **pItem) {
     int i;
     printf("Choix...[1:4]\n");
     scanf("%d",&i);

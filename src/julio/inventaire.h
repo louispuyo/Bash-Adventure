@@ -28,14 +28,108 @@ typedef struct Liste {
 // "void func (*args){}"
 
 //fonction pour initaliser avec un malloc
+void creationInvent(Inventaire **ppl){
+    if(!(*ppl=(Inventaire *)malloc(sizeof(Inventaire)))){exit(-1);}
+    (*ppl)->head = NULL;
+    printf("Création de l'inventaire\n");
+}
+
 //fonction pour ajouter au debut
+void ajoutDebutInventaire(Inventaire *inventaire, Item *item){
+    Item *pc;
+    initItem(&pc);
+    pc->suivant = (inventaire)->head;
+    inventaire ->head = pc;
+}
+
 //fonction pour ajouter a la fin
+void ajoutFinInventaire(Inventaire *inventaire, Item *item){
+    if(inventaire->head) {
+        // il y a au moins un élément dans la liste
+        Item *pc;
+        initItem(&pc);
+        pc->suivant = NULL;          // au lieu de ces trois fonctions ...
+
+        Item *pc2 = inventaire->head;
+        while(pc2->suivant) pc2 = pc2->suivant;
+        pc2->suivant = pc;
+    }
+    else{ // sinon c'est pareil qu'insérer en tete
+        ajoutDebutInventaire(inventaire,item);
+    }
+}
+
+/// Ajoute un item initialisé a null dans une liste
+/// \param inventaire
+void ajoutItemnull(Inventaire **pInventaire){
+    Item *item;
+    initItem(&item);
+    afficheItem(item);
+    if ((*pInventaire)!=NULL && (item)!=NULL){item->suivant=NULL;}
+    ajoutFinInventaire(*pInventaire,item);
+}
+
 //fonction pour afficher
+/// Fonction pour afficher l'inventaire
+/// \param inventaire
+void afficheInvent(Inventaire *inventaire){
+    Item *pc = inventaire->head;
+    while(pc){            // ou : while(pc != NULL){
+        afficheItem(pc);
+        printf(" ");        // il faudrait éviter d'afficher le dernier espace
+        pc = pc->suivant;
+    }
+    printf("\n");
+}
 //fonction pour supprimer au debut
+
 //fonction pour supprimer a la fin
 //fonction pour retrouver
+
 //fonction pour trier alphabetiquement (si vous etes chaud)
-//fonction pour modifier
+
+/// fonction pour retrouver l'Item
+/// \param inventaire
+/// \param c
+/// \return
+Item chercherItem(Inventaire *inventaire,const char *c){
+    int trouve = 0;
+    Item *pc = inventaire->head;
+    while ((!trouve)&&pc){
+        if(pc->nom == c){
+            trouve = 1;
+        } else{
+            pc = pc->suivant;
+        }
+    }
+    if(trouve==0){ printf("Item non trouvé\n");
+        initItem(&pc);} else{ printf("Trouvé\n");}
+    return *pc;
+}
+
+//fonction pour détruire un item
+void destructionItem(Item **ppc){
+    if(*ppc){       // protection contre les destructions de pointeur null
+        free(*ppc);
+        *ppc = NULL;  // important pour éviter une réutilisation du pointeur après la libération
+    }               // de la mémoire (c'est pour cela qu'on passe la pointeur par référence)
+}
+//fonction pour detruire un Inventaire
+void destructionListe(Inventaire **ppl){
+    if(*ppl){       // protection contre les destructions de pointeur null
+        // il faut commencer par détruire les éléments de la liste
+        while((*ppl)->head){
+            Item *pc = (*ppl)->head->suivant;
+            // destructionCellule(&(*ppl)->tete); // joli mais non optimal
+            free((*ppl)->head); // est préférable (une affectation inutile en
+            // moins)
+            (*ppl)->head = pc;
+        }
+
+        free(*ppl);
+        *ppl = NULL;
+    }
+}
 
 //--------------------------------------------------------------------------//
 #endif //BASH_ADVENTURE_INVENTAIRE_H

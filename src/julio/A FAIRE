@@ -4,4 +4,20 @@ AJOUT//
         int POS_Y
         int SPEED_X
         int SPEDD_Y
-        
+    FAIT//Ils ont été initialisés a 0;
+    + Fonctions de modification de la position et de la vitesse
+    // Fonction Mod Pos
+    /// \param pEntity
+    /// \param ptrx, ptry
+    void modItPos(Entity **pEntity,int ptrx,int ptry){
+        (*pEntity)->pos_x = ptrx;
+        (*pEntity)->pos_y = ptry;
+    }
+
+    // Fonction Mod Speed
+    /// \param pEntity
+    /// \param ptrx, ptry
+    void modItSpeed(Entity **pEntity,int ptrx,int ptry){
+        (*pEntity)->speed_x = ptrx;
+        (*pEntity)->speed_y = ptry;
+    }

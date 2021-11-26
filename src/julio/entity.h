@@ -31,6 +31,10 @@ struct Entity {
     int money;//argent
     int atk;//dommages
     int def;//defense
+    int pos_x;//position sur la map
+    int pos_y;
+    int speed_x;
+    int speed_y;
 
     Entity *suivant;
 };
@@ -54,6 +58,11 @@ void initIt(Entity **pEntity) {
     //(*pEntity)->action = 0;
     (*pEntity)->atk = 0;
     (*pEntity)->def = 0;
+    (*pEntity)->pos_x=0;
+    (*pEntity)->pos_y=0;
+    (*pEntity)->speed_x=0;
+    (*pEntity)->speed_y=0;
+
     (*pEntity)->suivant = NULL;
     printf("InitEntity\n");
 }
@@ -132,6 +141,23 @@ void modItAtk(Entity **pEntity,int ptr){
 void modItDef(Entity **pEntity,int ptr){
     (*pEntity)->def = ptr;
 }
+
+// Fonction Mod Pos
+/// \param pEntity
+/// \param ptrx, ptry
+void modItPos(Entity **pEntity,int ptrx,int ptry){
+    (*pEntity)->pos_x = ptrx;
+    (*pEntity)->pos_y = ptry;
+}
+
+// Fonction Mod Speed
+/// \param pEntity
+/// \param ptrx, ptry
+void modItSpeed(Entity **pEntity,int ptrx,int ptry){
+    (*pEntity)->speed_x = ptrx;
+    (*pEntity)->speed_y = ptry;
+}
+
 //--------------------------------------------------------------------------//
 
 //fonction d'interaction

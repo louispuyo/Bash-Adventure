@@ -93,23 +93,36 @@ void initEnt(Entity **pEntity) {
     (*pEntity)->funcInter=menuInter;
 
     (*pEntity)->suivant = NULL;
-    printf("InitEntity\n");
+    //printf("InitEntity\n");
 }
 //fonction pour ajouter au debut
 //fonction pour ajouter a la fin
 //fonction pour afficher (penser a faire une version courte)
-void affIt(Entity *entity){
-    printf("entity->nom = %s\n",entity->nom);
-    printf("entity->description = %s\n",entity->des);
-    printf("entity->pv = %d\n",entity->pv);
-    printf("entity->pvMax = %d\n",entity->pvMax);
-    printf("entity->xp = %d\n",entity->xp);
-    printf("entity->level = %d\n",entity->level);
-    printf("entity->money = %d\n",entity->money);
-    printf("entity->atk = %d\n",entity->atk);
-    printf("entity->def = %d\n",entity->def);
-    //printf("entity->vie = %d",entity->options);
-    //printf("");
+void affIt(Entity *entity,int i,int full){
+        if(i>=0){
+            if (full==1)printf("entity->nom = ");
+            printf("%s\n",entity->nom);
+            if(i>=1){
+                if (full==1)printf("entity->description = ");
+                printf("%s\n",entity->des);
+                if (full==1)printf("entity->pv = ");
+                printf("%d\n",entity->pv);
+                if (full==1)printf("entity->level = ");
+                printf("%d\n",entity->level);
+                if (full==1)printf("entity->money = ");
+                printf("%d\n",entity->money);
+                if(i>=2){
+                    if (full==1)printf("entity->xp = ");
+                    printf("%d\n",entity->xp);
+                    if (full==1)printf("entity->pvMax = ");
+                    printf("%d\n",entity->pvMax);
+                    if (full==1)printf("entity->atk = ");
+                    printf("%d\n",entity->atk);
+                    if (full==1)printf("entity->def = ");
+                    printf("%d\n",entity->def);
+                }
+            }
+        }
 }
 //fonction pour supprimer au debut
 //fonction pour supprimer a la fin

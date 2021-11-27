@@ -14,27 +14,8 @@
 #include "item.h"
 //INITIALISATION-------------------------------------------------------------//
 void initialisation(){
-//    Entity *e,*e2;
-    Item *item,i2;
-    Inventaire *liste;
-    initItem(&item);
-    creationInvent(&liste);
-//    choixIt(&item);
-//    initEnt(&e);
-//    choixInter(&e);
-    ajoutFinInventaire(liste,item);
-    afficheInvent(liste);
-//    initSlime(&e);
-//    initLizard(&e2);
-//    initWarrior(&e);
-//    affIt(e);
-//    affIt(e2);
-//    while ((e->pv>0)&&(e2->pv)>0){
-//        EntAttack(e,&e2);
-//        EntAttack(e2,&e);
-//    }
-//    affIt(e);
-//    affIt(e2);
+    Entity *e;
+    selectionP();
 }
 //---------------------------------------------------------------------------//
 int main() {

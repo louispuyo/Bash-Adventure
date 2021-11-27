@@ -56,5 +56,13 @@ void choixAtk(Entity **pEntity){
     scanf("%d",&i);
     (*pEntity)->funcInter(i);
 }
+//BATTLE PHASE---------------------------------------------------------------//
+void battlePhase(Entity **e1,Entity **e2){
+    printf("DEBUT DU COMBAT\n");
+    printf("%s CONTRE %s",(*e1)->nom,(*e2)->nom);
+    affIt(*e1,1,0);
+    printf("QUE FAIRE?");
+}
 //--------------------------------------------------------------------------//
+
 #endif //BASH_ADVENTURE_ACTIONS_H

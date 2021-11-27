@@ -32,7 +32,7 @@ void funcUp(char **name) {
 /// \param pEntity
 void initWarrior(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"Jean\"");
+    modItName(pEntity,"\"JEAN\"");
     modItDes(pEntity,"\"CHEVALIER\"");//par exemple
     modItPv(pEntity,10);
     modItPvMax(pEntity,10);
@@ -47,7 +47,7 @@ void initWarrior(Entity **pEntity){
 /// \param pEntity
 void initWizard(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"Harry\"");
+    modItName(pEntity,"\"HARRY\"");
     modItDes(pEntity,"\"MAGE\"");
     modItPv(pEntity,10);
     modItPvMax(pEntity,10);
@@ -61,7 +61,7 @@ void initWizard(Entity **pEntity){
 /// \param pEntity
 void initBandit(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"Rinaldo\"");
+    modItName(pEntity,"\"RINALDO\"");
     modItDes(pEntity,"\"BANDIT\"");
     modItPv(pEntity,10);
     modItPvMax(pEntity,10);
@@ -94,22 +94,24 @@ char* stats(int i){
         case 1:
             initWarrior(&entity);
             modItName(&entity,pName);
-            affIt(entity,1,1);
+            affIt(entity,1,0);
             break;
         case 2:
             initWizard(&entity);
             modItName(&entity,pName);
-            affIt(entity,1,1);
+            affIt(entity,1,0);
             break;
         case 3:
             initBandit(&entity);
             modItName(&entity,pName);
-            affIt(entity,1,1);
+            affIt(entity,1,0);
             break;
         default:
+            initEnt(&entity);
             break;
     }
     printf("START GAME\n");
+    return *entity;
 }
 //--------------------------------------------------------------------------//
 #endif //BASH_ADVENTURE_PLAYER_H

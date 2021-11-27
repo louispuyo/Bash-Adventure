@@ -14,8 +14,11 @@
 #include "item.h"
 //INITIALISATION-------------------------------------------------------------//
 void initialisation(){
-    Entity *e;
-    selectionP();
+    Entity *e,*e2;
+    initEnt(&e);
+    *e=selectionP();
+    initWolf(&e2);
+    battlePhase(&e,&e2);
 }
 //---------------------------------------------------------------------------//
 int main() {

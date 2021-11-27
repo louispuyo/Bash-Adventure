@@ -104,13 +104,13 @@ void affIt(Entity *entity,int i,int full){
             printf("%s\n",entity->nom);
             if(i>=1){
                 if (full==1)printf("entity->description = ");
-                printf("%s\n",entity->des);
+                printf("TYPE %s\n",entity->des);
                 if (full==1)printf("entity->pv = ");
-                printf("%d\n",entity->pv);
+                printf("%d PV\n",entity->pv);
                 if (full==1)printf("entity->level = ");
-                printf("%d\n",entity->level);
+                printf("LVL %d\n",entity->level);
                 if (full==1)printf("entity->money = ");
-                printf("%d\n",entity->money);
+                printf("%d OR\n",entity->money);
                 if(i>=2){
                     if (full==1)printf("entity->xp = ");
                     printf("%d\n",entity->xp);
@@ -198,7 +198,6 @@ void modItSpeed(Entity **pEntity,int ptrx,int ptry){
     (*pEntity)->speed_y = ptry;
 }
 
-//--------------------------------------------------------------------------//
 
 
 //--------------------------------------------------------------------------//

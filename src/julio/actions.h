@@ -25,11 +25,11 @@
 /// Une attaque d'une entité a une autre
 /// \param from
 /// \param to
-void EntAttack(Entity *from,Entity **to){
+void EntAttack(Entity *from,Entity **to,int itemUSe){
     printf("%s attack %s\n",from->nom,(*to)->nom);//attention au printf
-    (*to)->pv-=from->atk-(*to)->def;
-    printf("%s A FAIT %d DEGATS\n",(*from).nom,(from->atk-(*to)->def));
-    printf("%s PERDS %d PV\n",(*to)->nom,(from->atk)-(*to)->def);
+    (*to)->pv-=from->atk+itemUSe-(*to)->def;
+    printf("%s A FAIT %d DEGATS\n",(*from).nom,(from->atk+itemUSe-(*to)->def));
+    printf("%s PERDS %d PV\n",(*to)->nom,(from->atk)+itemUSe-(*to)->def);
     printf("%s A MAINTENANT %d PV\n",(*to)->nom,(*to)->pv);
 }
 
@@ -40,10 +40,25 @@ void utilItem(Entity **e){
 void menuAttack(Entity **e1,Entity **e2,int i){
     switch (i) {
         case 1:
-            EntAttack(*e1,e2);
+            EntAttack(*e1,e2,0);
             break;
         case 2:
             afficheInvent((*e1)->inventaire);
+            printf("QUE FAIRE?\n"
+                   "\t1:Utiliser\n"
+                   "\t2:Retour\n");
+            int choix;
+            scanf("%d",&choix);
+            if(choix==2){break;}
+
+            char *itemName = NULL;
+            Item *inUse = (Item*) malloc(sizeof(Item));
+            printf("NOM DE L'ITEM A UTILISER>>>");
+            scanf("%s",itemName);
+
+            printf("INUSE DEGAT %d\n\n",chercherItem(((*e1)->inventaire),itemName)->DEG);
+            EntAttack(*e1,e2,chercherItem(((*e1)->inventaire),itemName)->DEG);
+            i =1;
             break;
         case 3:
             printf("FUITE\n");

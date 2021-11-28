@@ -45,11 +45,6 @@ void ajoutDebutInventaire(Inventaire *inventaire, Item *item){
 //fonction pour ajouter a la fin
 void ajoutFinInventaire(Inventaire *inventaire, Item *item){
     if(inventaire->head) {
-        // il y a au moins un élément dans la liste
-        Item *pc;
-        initItem(&pc);
-        pc->suivant = NULL;          // au lieu de ces trois fonctions ...
-
         Item *pc2 = inventaire->head;
         while(pc2->suivant) pc2 = pc2->suivant;
         pc2->suivant = item;
@@ -77,7 +72,7 @@ void afficheInvent(Inventaire *inventaire){
     if(inventaire->head){
         Item *pc = inventaire->head;
         while(pc){            // ou : while(pc != NULL){
-            afficheItem(pc);
+            afficheItem(pc,1,0);
             //printf(" ");        // il faudrait éviter d'afficher le dernier
             // espace
             pc = pc->suivant;
@@ -97,7 +92,7 @@ void afficheInvent(Inventaire *inventaire){
 /// \param inventaire
 /// \param c
 /// \return
-Item chercherItem(Inventaire *inventaire,const char *c){
+Item* chercherItem(Inventaire *inventaire,const char *c){
     int trouve = 0;
     Item *pc = inventaire->head;
     while ((!trouve)&&pc){
@@ -109,7 +104,7 @@ Item chercherItem(Inventaire *inventaire,const char *c){
     }
     if(trouve==0){ printf("Item non trouvé\n");
         initItem(&pc);} else{ printf("Trouvé\n");}
-    return *pc;
+    return pc;
 }
 
 //fonction pour détruire un item

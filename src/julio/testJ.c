@@ -19,11 +19,17 @@ void initialisation(){
     *e=selectionP();
     initSlime(&e2);
     battlePhase(&e,&e2);
+
+//    Inventaire *inventaire;
+//    creationInvent(&inventaire);
+//    ajoutFinInventaire(inventaire,InitSword());
+//    afficheItem(chercherItem(inventaire,"GALATINE"),1,1);
+
 //    Item *item;
 //    initItem(&item);
 //    modItemName(&item,"LH");
 //    afficheItem(item);
-//
+////
 //    afficheInvent(e->inventaire);
 ////    afficheItem(ItemSword(&e));
 //    afficheInvent(e->inventaire);

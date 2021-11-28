@@ -67,12 +67,19 @@ void initItem(Item **pItem){
 //fonction pour ajouter a la fin
 
 //fonction pour afficher
-void afficheItem(Item *item){
-    printf("item->nom : %s\n",item->nom);  // ni espace ni saut de ligne !
-    printf("item->des : %s\n",item->des);
-    printf("item->place : %d\n",item->place);
-    printf("item->DEGATS : %d\n",item->DEG);
-    if(item->suivant){ printf("suivant : %s\n",item->suivant->nom);}
+void afficheItem(Item *item,int i,int full){
+    printf("\t<<<ITEM\n");
+    if(i>=0) {
+        if (full==1)printf("\titem->nom : ");
+        printf("\t%s\n", item->nom);
+        if (full==1)printf("\titem->des : ");
+        printf("\t%s\n", item->des);
+        if (full==1)printf("\titem->place : ");
+        printf("\t%d KG\n", item->place);
+        if (full==1)printf("\titem->DEGATS : ");
+        printf("\t+ %d ATK\n", item->DEG);
+        //if(item->suivant){ printf("suivant : %s\n",item->suivant->nom);}
+    }
 }
 //fonction pour supprimer au debut
 //fonction pour supprimer a la fin

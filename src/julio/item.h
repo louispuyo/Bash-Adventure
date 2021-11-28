@@ -17,11 +17,11 @@ struct Item {
     int place;//niveau d'encombrement de l'item 1=léger 2=moyen 3=lourd
     void (*funcItem)(int i);//pointeur sur
     // fonction
+    int DEG;//Dégats de l'item
     Item *suivant;
 };
 //CONSTANTES----------------------------------------------------------------//
 #define poids [3]{"zero","leger","moyen","lourd"};//constantes des poids
-//--------------------------------------------------------------------------//
 //MENU UTILISATION----------------------------------------------------------//
 void menuIte(int i){
     switch (i) {
@@ -56,9 +56,10 @@ void initItem(Item **pItem){
     (*pItem)->nom     = 0;
     (*pItem)->des     = 0;
     (*pItem)->place   = 0;
+    (*pItem)->DEG   = 0;
     (*pItem)->suivant = NULL;
     (*pItem)->funcItem = menuIte;
-    printf("InitItem\n");
+//    printf("InitItem\n");
 }
 
 //fonction pour ajouter au debut
@@ -70,16 +71,67 @@ void afficheItem(Item *item){
     printf("item->nom : %s\n",item->nom);  // ni espace ni saut de ligne !
     printf("item->des : %s\n",item->des);
     printf("item->place : %d\n",item->place);
+    printf("item->DEGATS : %d\n",item->DEG);
     if(item->suivant){ printf("suivant : %s\n",item->suivant->nom);}
 }
-
 //fonction pour supprimer au debut
 //fonction pour supprimer a la fin
 //fonction pour retrouver
 
 //fonction pour trier alphabetiquement (si vous etes chaud)
-//fonction pour modifier
+///fonction pour modifier le nom de l'item
+/// \param pItem
+/// \param ptr
+void modItemName(Item **pItem,char *ptr){
+    (*pItem)->nom = ptr;
+}
 
+void modItemDes(Item **pItem,char *ptr){
+    (*pItem)->des = ptr;
+}
+
+void modItemPlace(Item **pItem,int i){
+    (*pItem)->place = i;
+}
+void modItemDeg(Item **pItem,int i){
+    (*pItem)->DEG = i;
+}
+
+//ITEMS DU JEU---------------------------------------------------------------//
+Item* InitSword(){
+    Item *pItem;
+    initItem(&pItem);
+    modItemName(&pItem,"GALATINE");
+    modItemDes(&pItem,"EPEE");
+    modItemPlace(&pItem,2);
+    modItemDeg(&pItem,2);
+}
+
+Item* InitWaterMagic(){
+    Item *pItem;
+    initItem(&pItem);
+    modItemName(&pItem,"SPLASHARUS");
+    modItemDes(&pItem,"MAGIE");
+    modItemPlace(&pItem,0);
+    modItemDeg(&pItem,1);
+}
+Item* InitKnife(){
+    Item *pItem;
+    initItem(&pItem);
+    modItemName(&pItem,"APAIN");
+    modItemDes(&pItem,"COUTEAU");
+    modItemPlace(&pItem,1);
+    modItemDeg(&pItem,1);
+}
+
+Item* InitRage(){
+    Item *pItem;
+    initItem(&pItem);
+    modItemName(&pItem,"RAGE");
+    modItemDes(&pItem,"OMBRE");
+    modItemPlace(&pItem,2);
+    modItemDeg(&pItem,0);
+}
 //POINTEUR SUR FONCTION------------------------------------------------------//
 ///Fonction qui appelle un pointeur de fonction pour utiliser l'item
 /// \param pItem//A REVOIR

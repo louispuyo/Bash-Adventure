@@ -63,7 +63,7 @@ void initWolf(Entity **pEntity){
     modItLvl(pEntity, 1*3);
     modItMoney(pEntity,3);
     modItAtk(pEntity,1*3);
-    modItDef(pEntity,0);
+    modItDef(pEntity,2);
 }
 //--------------------------------------------------------------------------//
 #endif //BASH_ADVENTURE_MOB_H

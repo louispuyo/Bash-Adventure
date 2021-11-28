@@ -41,7 +41,8 @@ void initWarrior(Entity **pEntity){
     modItMoney(pEntity,5);
     modItAtk(pEntity,2);
     modItDef(pEntity,2);
-
+    give(pEntity,InitSword());
+    give(pEntity,InitWaterMagic());
 }
 /// Initialise un Mob de type Lezard
 /// \param pEntity
@@ -94,17 +95,17 @@ char* stats(int i){
         case 1:
             initWarrior(&entity);
             modItName(&entity,pName);
-            affIt(entity,1,0);
+            affIt(entity,2,0);
             break;
         case 2:
             initWizard(&entity);
             modItName(&entity,pName);
-            affIt(entity,1,0);
+            affIt(entity,2,0);
             break;
         case 3:
             initBandit(&entity);
             modItName(&entity,pName);
-            affIt(entity,1,0);
+            affIt(entity,2,0);
             break;
         default:
             initEnt(&entity);

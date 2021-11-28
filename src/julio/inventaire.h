@@ -31,7 +31,7 @@ typedef struct Liste {
 void creationInvent(Inventaire **ppl){
     if(!(*ppl=(Inventaire *)malloc(sizeof(Inventaire)))){exit(-1);}
     (*ppl)->head = NULL;
-    printf("Création de l'inventaire\n");
+    //printf("Création de l'inventaire\n");
 }
 
 //fonction pour ajouter au debut
@@ -39,7 +39,7 @@ void ajoutDebutInventaire(Inventaire *inventaire, Item *item){
     Item *pc;
     initItem(&pc);
     pc->suivant = (inventaire)->head;
-    inventaire ->head = pc;
+    inventaire ->head = item;
 }
 
 //fonction pour ajouter a la fin
@@ -52,7 +52,7 @@ void ajoutFinInventaire(Inventaire *inventaire, Item *item){
 
         Item *pc2 = inventaire->head;
         while(pc2->suivant) pc2 = pc2->suivant;
-        pc2->suivant = pc;
+        pc2->suivant = item;
     }
     else{ // sinon c'est pareil qu'insérer en tete
         ajoutDebutInventaire(inventaire,item);
@@ -64,7 +64,7 @@ void ajoutFinInventaire(Inventaire *inventaire, Item *item){
 void ajoutItemnull(Inventaire **pInventaire){
     Item *item;
     initItem(&item);
-    afficheItem(item);
+    //afficheItem(item);
     if ((*pInventaire)!=NULL && (item)!=NULL){item->suivant=NULL;}
     ajoutFinInventaire(*pInventaire,item);
 }
@@ -73,13 +73,18 @@ void ajoutItemnull(Inventaire **pInventaire){
 /// Fonction pour afficher l'inventaire
 /// \param inventaire
 void afficheInvent(Inventaire *inventaire){
-    Item *pc = inventaire->head;
-    while(pc){            // ou : while(pc != NULL){
-        afficheItem(pc);
-        printf(" ");        // il faudrait éviter d'afficher le dernier espace
-        pc = pc->suivant;
-    }
-    printf("\n");
+    printf("<<<SAC\n");
+    if(inventaire->head){
+        Item *pc = inventaire->head;
+        while(pc){            // ou : while(pc != NULL){
+            afficheItem(pc);
+            //printf(" ");        // il faudrait éviter d'afficher le dernier
+            // espace
+            pc = pc->suivant;
+        }
+        //printf("\n");
+    }else{ printf("TES POCHES SONT VIDES UTILISE TES MAINS\n");}
+    printf("SAC>>>\n");
 }
 //fonction pour supprimer au debut
 

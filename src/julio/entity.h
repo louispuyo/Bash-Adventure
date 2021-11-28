@@ -11,6 +11,7 @@
 #include "stdio.h"
 #include "string.h"
 #include "malloc.h"
+#include "inventaire.h"
 //--------------------------------------------------------------------------//
 typedef struct Entity Entity;//Struct Entity
 struct Entity {
@@ -28,7 +29,7 @@ struct Entity {
     int speed_x;
     int speed_y;
 
-
+    Inventaire *inventaire;
     void (*funcInter)(int);//pointeur sur fonction
 
     Entity *suivant;
@@ -92,6 +93,7 @@ void initEnt(Entity **pEntity) {
     (*pEntity)->speed_y=0;
     (*pEntity)->funcInter=menuInter;
 
+    creationInvent(&(*pEntity)->inventaire);
     (*pEntity)->suivant = NULL;
     //printf("InitEntity\n");
 }
@@ -99,30 +101,32 @@ void initEnt(Entity **pEntity) {
 //fonction pour ajouter a la fin
 //fonction pour afficher (penser a faire une version courte)
 void affIt(Entity *entity,int i,int full){
-        if(i>=0){
-            if (full==1)printf("entity->nom = ");
-            printf("%s\n",entity->nom);
-            if(i>=1){
-                if (full==1)printf("entity->description = ");
-                printf("TYPE %s\n",entity->des);
-                if (full==1)printf("entity->pv = ");
-                printf("%d PV\n",entity->pv);
-                if (full==1)printf("entity->level = ");
-                printf("LVL %d\n",entity->level);
-                if (full==1)printf("entity->money = ");
-                printf("%d OR\n",entity->money);
-                if(i>=2){
-                    if (full==1)printf("entity->xp = ");
-                    printf("%d\n",entity->xp);
-                    if (full==1)printf("entity->pvMax = ");
-                    printf("%d\n",entity->pvMax);
-                    if (full==1)printf("entity->atk = ");
-                    printf("%d\n",entity->atk);
-                    if (full==1)printf("entity->def = ");
-                    printf("%d\n",entity->def);
-                }
+    printf("<<<STATS\n");
+    if(i>=0){
+        if (full==1)printf("\tentity->nom = ");
+        printf("\t%s\n",entity->nom);
+        if(i>=1){
+            if (full==1)printf("\tentity->description = ");
+            printf("\tTYPE %s\n",entity->des);
+            if (full==1)printf("\tentity->pv = ");
+            printf("\t%d PV\n",entity->pv);
+            if (full==1)printf("\tentity->level = ");
+            printf("\tLVL %d\n",entity->level);
+            if (full==1)printf("\tentity->money = ");
+            printf("\t%d OR\n",entity->money);
+            if(i>=2){
+                if (full==1)printf("\tentity->xp = ");
+                printf("\t%d XP\n",entity->xp);
+                if (full==1)printf("\tentity->pvMax = ");
+                printf("\t%d PV MAX\n",entity->pvMax);
+                if (full==1)printf("\tentity->atk = ");
+                printf("\t%d ATQ\n",entity->atk);
+                if (full==1)printf("\tentity->def = ");
+                printf("\t%d DEF\n",entity->def);
             }
         }
+    }
+    printf("STATS>>>\n");
 }
 //fonction pour supprimer au debut
 //fonction pour supprimer a la fin
@@ -198,7 +202,9 @@ void modItSpeed(Entity **pEntity,int ptrx,int ptry){
     (*pEntity)->speed_y = ptry;
 }
 
-
+void give(Entity **pEntity,Item *pItem){
+    ajoutFinInventaire((*pEntity)->inventaire,pItem);
+}
 
 //--------------------------------------------------------------------------//
 ///Fonction qui appelle un pointeur de fonction pour utiliser l'item

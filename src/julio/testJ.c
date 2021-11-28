@@ -17,8 +17,22 @@ void initialisation(){
     Entity *e,*e2;
     initEnt(&e);
     *e=selectionP();
-    initWolf(&e2);
+    initSlime(&e2);
     battlePhase(&e,&e2);
+//    Item *item;
+//    initItem(&item);
+//    modItemName(&item,"LH");
+//    afficheItem(item);
+//
+//    afficheInvent(e->inventaire);
+////    afficheItem(ItemSword(&e));
+//    afficheInvent(e->inventaire);
+//    printf("PAUSE\n");
+//    Item *item;
+//    initItemSword(&item);
+//    modItemName(&item,"Epee");
+//    ajoutFinInventaire(e->inventaire,item);
+//    afficheInvent(e->inventaire);
 }
 //---------------------------------------------------------------------------//
 int main() {

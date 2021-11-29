@@ -16,10 +16,15 @@
 //INITIALISATION-------------------------------------------------------------//
 void initialisation(){
     Entity *e,*e2;
+    Monde *monde;
+    creationMonde(&monde);
     initEnt(&e);
     *e=selectionP();
     initLizard(&e2);
-
+    ajoutFinMonde(monde,e);
+    ajoutFinMonde(monde,e2);
+    supprimeEntMonde(monde,&e2);
+    afficheMonde(monde);
     system("PAUSE");
 
 

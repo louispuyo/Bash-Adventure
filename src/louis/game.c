@@ -4,7 +4,7 @@
 
 #define HERBES  	  ' '
 #define EMPTY     ' '
-#define EAU	  '~'
+#define EAU	  'h'
 #define MONTAGNE  '^'
 #define PLAYER	  '*'
 #define BOMBE     'b'
@@ -41,8 +41,8 @@ int main(void)
 
     /* start player at lower-left */
 
-    y = LINES - 1;
-    x = 0;
+    y = LINES - 15;
+    x = 40;
 
     do {
 	/* by default, you get a blinking cursor - use it to indicate player */
@@ -132,8 +132,8 @@ void draw_map(void)
 
     /* background */
 
-    for (y = 0; y < LINES; y++) {
-	mvhline(y, 0, HERBES, COLS);
+    for (y = 5; y < LINES/2; y++) {
+	// mvhline(y, 50, HERBES, COLS);
     }
 
 
@@ -151,12 +151,12 @@ void draw_map(void)
     // DISP
     affIt(player_1, 1, 10);
 
-    mvhline(LINES / 4, 0, HERBES, COLS);
+    // mvhline(LINES / 4, 0, HERBES, COLS);
 
     /* lake */
 
     for (y = 1; y < LINES / 2; y++) {
-	mvhline(y, 1, EAU, COLS / 3);
+	// mvhline(y, 1, EAU, COLS / 3);
     }
 }
 

@@ -12,13 +12,14 @@
 #include "player.h"
 #include "inventaire.h"
 #include "item.h"
+#include "monde.h"
 //INITIALISATION-------------------------------------------------------------//
 void initialisation(){
     Entity *e,*e2;
     initEnt(&e);
     *e=selectionP();
     initLizard(&e2);
-    battlePhase(&e,&e2);
+
     system("PAUSE");
 
 

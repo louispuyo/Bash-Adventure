@@ -12,13 +12,14 @@
 #include "player.h"
 #include "inventaire.h"
 #include "item.h"
+#include "monde.h"
 //INITIALISATION-------------------------------------------------------------//
 void initialisation(){
     Entity *e,*e2;
     initEnt(&e);
     *e=selectionP();
     initLizard(&e2);
-    battlePhase(&e,&e2);
+
     system("PAUSE");
 
 
@@ -95,51 +96,12 @@ void plat(){
 
         system("PAUSE");   // Le programme se met en pause
 }
-void men(){
-    int fin;
 
-    fin = 0;
-    while(!fin)
-    {
-        int c;
-
-        /* affichage menu */
-        printf("1.Nouvelle Partie 1\n"
-               "2.Charger Partie 2\n"
-               "3.Quitter\n");
-
-        c = getchar();
-
-        /* suppression des caracteres dans stdin */
-        if(c != '\n' && c != EOF)
-        {
-            int d;
-            while((d = getchar()) != '\n' && d != EOF);
-        }
-
-        switch(c)
-        {
-            case '1':
-                printf("Nouvelle Partie\n");
-                break;
-
-            case '2':
-                printf("Charger Partie\n");
-                break;
-
-            case '3':
-                printf("Quitter\n");
-                break;
-
-            default:
-                printf("Choix errone\n");
-        }
-    }
-}
 //---------------------------------------------------------------------------//
 int main() {
     printf("Hello, World!\n");
     initialisation();
+    //plat();
     return 0;
 }
 

@@ -27,6 +27,7 @@ struct Entity {
     int def;//defense
     int pos_x;//position sur la map
     int pos_y;
+    int pos;//position dans le monde
     int speed_x;
     int speed_y;
 
@@ -93,6 +94,7 @@ void initEnt(Entity **pEntity) {
     (*pEntity)->pos_y=0;
     (*pEntity)->speed_x=0;
     (*pEntity)->speed_y=0;
+    (*pEntity)->pos = 0;
     (*pEntity)->funcInter=menuInter;
 
     creationInvent(&(*pEntity)->inventaire);

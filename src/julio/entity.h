@@ -115,9 +115,9 @@ void affIt(Entity *entity,int i,int full){
             printf("\tLVL %d\n",entity->level);
             if (full==1)printf("\tentity->money = ");
             printf("\t%d OR\n",entity->money);
+            if (full==1)printf("\tentity->xp = ");
+            printf("\t%d XP\n",entity->xp);
             if(i>=2){
-                if (full==1)printf("\tentity->xp = ");
-                printf("\t%d XP\n",entity->xp);
                 if (full==1)printf("\tentity->pvMax = ");
                 printf("\t%d PV MAX\n",entity->pvMax);
                 if (full==1)printf("\tentity->atk = ");
@@ -218,9 +218,29 @@ void loot(Entity **from,Entity **to){
         ajoutFinInventaire((*to)->inventaire,(*from)->inventaire->head);
     }
     printf("\"%s\" GAGNE %d XP %d OR\n",(*to)->nom,(*from)->xp,(*from)->money);
+    modItXp(to,(*to)->xp+(*from)->xp);
+    modItMoney(to,(*to)->money+(*from)->money);
     affIt((*to),1,0);
-    (*to)->xp += (*from)->xp;
-    (*to)->money += (*from)->money;
+}
+
+void lvlUp(Entity **to){
+    printf("<<<\"%s\" MONTE DE LEVEL>>>\n",(*to)->nom);
+    modItLvl(to,+1);
+    modItPvMax(to,(*to)->pvMax+((*to)->level)*2);
+    modItPv(to,(*to)->pvMax);
+    modItXp(to,0);
+    modItLvl(to, (*to)->level+1);
+    modItMoney(to,(*to)->money+((*to)->level)*2);
+    modItAtk(to,(*to)->atk+((*to)->level)*2);
+    modItDef(to,(*to)->def+((*to)->level));
+    printf("<<<\"%s\" RECOIS +1 POTION DE SOIN>>>\n",(*to)->nom);
+    giveItem(to,InitSoin());
+    affIt((*to),2,0);
+}
+
+void lvlDown(Entity **to){
+    printf("<<<\"%s\" BAISSE DE LEVEL>>>\n",(*to)->nom);
+    modItLvl(to,-1);
 }
 //--------------------------------------------------------------------------//
 ///Fonction qui appelle un pointeur de fonction pour utiliser l'item

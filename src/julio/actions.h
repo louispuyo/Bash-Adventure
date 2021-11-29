@@ -22,12 +22,13 @@
 #define LVL_MAX int 100;
 #define MONEY_MIN int 0;
 #define MONEY_MAX int 100;
+#define SOINS char* s[1]={"SOINS"};
 //POUR ACTIONS---------------------------------------------------------------//
 /// Une attaque d'une entité a une autre
 /// \param from
 /// \param to
 void EntAttack(Entity *from,Entity **to,int itemUSe){
-    printf(">>>\"%s\" attack \"%s\"\n",from->nom,(*to)->nom);//attention au
+    printf(">>>\"%s\" ATTAQUE \"%s\"\n",from->nom,(*to)->nom);//attention au
     // printf
     (*to)->pv-=from->atk+itemUSe-(*to)->def;
     printf(">>>\"%s\" A FAIT %d DEGATS\n",(*from).nom,(from->atk+itemUSe-(*to)
@@ -36,8 +37,9 @@ void EntAttack(Entity *from,Entity **to,int itemUSe){
     printf(">>>\"%s\" A MAINTENANT %d PV\n",(*to)->nom,(*to)->pv);
 }
 
-void utilItem(Entity **e){
-    afficheInvent((*e)->inventaire);
+void utilSoin(Entity **pEntity,Item *pItem){
+    (*pEntity)->pv += pItem->DEG;
+    printf("%s RECUPERE %d PV",(*pEntity)->nom,pItem->DEG);
 }
 //MENU ATTAQUE---------------------------------------------------------------//
 void menuAttack(Entity **e1,Entity **e2,int i){
@@ -56,9 +58,14 @@ void menuAttack(Entity **e1,Entity **e2,int i){
             int itemC = 0;//Ce bout de code pourrait etre dans une fonction
             printf("SELECTIONNER SLOT>>>");
             scanf("%d",&itemC);
-            printf("\"%s\" UTILISE %s\n",(*e1)->nom,chercherItemInt((*e1)
+            printf(">>>\"%s\" UTILISE %s\n",(*e1)->nom,chercherItemInt((*e1)
             ->inventaire,itemC)->nom);
-            EntAttack(*e1,e2,chercherItemInt((*e1)->inventaire,itemC)->DEG);
+            if(strcmp(chercherItemInt((*e1)->inventaire, itemC)->des,"SOINS")
+            == 0 ){
+                utilSoin(e1,chercherItemInt((*e1)->inventaire, itemC));
+            } else{
+                EntAttack(*e1,e2,chercherItemInt((*e1)->inventaire,itemC)->DEG);
+            }
             i =1;
             break;
         case 3:
@@ -108,14 +115,16 @@ Entity* battlePhase(Entity **e1,Entity **e2){
         }
     }
     if((*e1)->pv>=1&&i!=3){
-        printf("%s A VAINCU %s\n",(*e1)->nom,(*e2)->nom);
+        printf("<<<\"%s\" A VAINCU \"%s\">>>\n",(*e1)->nom,(*e2)->nom);
         loot(e2,e1);
+        if((*e1)->xp>=2){ lvlUp(e1); };
         return (*e1);
     }
     else{
-        printf("%s A VAINCU %s\n",(*e2)->nom,(*e1)->nom);
+        printf("<<<\"%s\" A VAINCU \"%s\">>>\n",(*e2)->nom,(*e1)->nom);
         return (*e2);
     }
+
 }
 //--------------------------------------------------------------------------//
 

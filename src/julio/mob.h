@@ -32,10 +32,9 @@ void initSlime(Entity **pEntity){
     modItXp(pEntity,1);
     modItLvl(pEntity, 1);
     modItMoney(pEntity,0);
-    modItAtk(pEntity,1);
+    modItAtk(pEntity,3);
     modItDef(pEntity,0);
-
-
+    giveItem(pEntity,InitSoin());
 }
 /// Initialise un Mob de type Lezard
 /// \param pEntity
@@ -48,7 +47,7 @@ void initLizard(Entity **pEntity){
     modItXp(pEntity,1*2);
     modItLvl(pEntity, 1*2);
     modItMoney(pEntity,2);
-    modItAtk(pEntity,1*2);
+    modItAtk(pEntity,3*2);
     modItDef(pEntity,1);
 }
 /// Initialise un Mob de type Loup
@@ -62,7 +61,7 @@ void initWolf(Entity **pEntity){
     modItXp(pEntity,1*3);
     modItLvl(pEntity, 1*3);
     modItMoney(pEntity,3);
-    modItAtk(pEntity,1*3);
+    modItAtk(pEntity,3*3);
     modItDef(pEntity,2);
 }
 //--------------------------------------------------------------------------//

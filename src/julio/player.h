@@ -42,7 +42,7 @@ void initWarrior(Entity **pEntity){
     modItAtk(pEntity,2);
     modItDef(pEntity,2);
     giveItem(pEntity,InitSword());
-    giveItem(pEntity,InitWaterMagic());
+    giveItem(pEntity,InitSoin());
 }
 /// Initialise un Mage
 /// \param pEntity
@@ -57,6 +57,8 @@ void initWizard(Entity **pEntity){
     modItMoney(pEntity,4);
     modItAtk(pEntity,3);
     modItDef(pEntity,1);
+    giveItem(pEntity,InitWaterMagic());
+    giveItem(pEntity,InitSoin());
 }
 /// Initialise un Bandit
 /// \param pEntity
@@ -71,6 +73,8 @@ void initBandit(Entity **pEntity){
     modItMoney(pEntity,6);
     modItAtk(pEntity,3);
     modItDef(pEntity,0);
+    giveItem(pEntity,InitKnife());
+    giveItem(pEntity,InitSoin());
 }
 char* stats(int i){
 

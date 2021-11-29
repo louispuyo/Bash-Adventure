@@ -80,8 +80,13 @@ void afficheItem(Item *item,int i,int full){
         printf("\t%s\n", item->des);
         if (full==1)printf("\titem->place : ");
         printf("\t%d KG\n", item->poids);
-        if (full==1)printf("\titem->DEGATS : ");
-        printf("\t+ %d ATK\n", item->DEG);
+        if(strcmp(item->des,"SOINS") == 0 ){
+            if (full==1)printf("\titem->SOINS : ");
+            printf("\t+ %d VIE\n", item->DEG);
+        } else{
+            if (full==1)printf("\titem->DEGATS : ");
+            printf("\t+ %d ATK\n", item->DEG);
+        }
         //if(item->suivant){ printf("suivant : %s\n",item->suivant->nom);}
     }
 }
@@ -124,7 +129,7 @@ Item* InitWaterMagic(){
     modItemName(&pItem,"SPLASHARUS");
     modItemDes(&pItem,"MAGIE");
     modItemPoids(&pItem, 0);
-    modItemDeg(&pItem,1);
+    modItemDeg(&pItem,2);
 }
 Item* InitKnife(){
     Item *pItem;
@@ -142,6 +147,15 @@ Item* InitRage(){
     modItemDes(&pItem,"OMBRE");
     modItemPoids(&pItem, 2);
     modItemDeg(&pItem,0);
+}
+
+Item* InitSoin(){
+    Item *pItem;
+    initItem(&pItem);
+    modItemName(&pItem,"POTION");
+    modItemDes(&pItem,"SOINS");
+    modItemPoids(&pItem, 1);
+    modItemDeg(&pItem,2);
 }
 //POINTEUR SUR FONCTION------------------------------------------------------//
 ///Fonction qui appelle un pointeur de fonction pour utiliser l'item

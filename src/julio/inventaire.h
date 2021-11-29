@@ -138,6 +138,27 @@ void destructionItem(Item **ppc){
         *ppc = NULL;  // important pour éviter une réutilisation du pointeur après la libération
     }               // de la mémoire (c'est pour cela qu'on passe la pointeur par référence)
 }
+
+
+//void retireItem(Inventaire *ppl,Item *pI){ FONCTIONNE PAS
+//    chercherItem(ppl,pI->nom);
+//    int trouve = 0;
+//    Item *pc = ppl->head;
+//    while ((!trouve)&&pc){
+//        if(strcmp(pc->nom, (const char *) chercherItem(ppl, pI->nom)) != 0){
+//            trouve = 1;
+//        } else{
+//            pc = pc->suivant;
+//        }
+//    }
+//    if(trouve==0){ //printf("\tItem non trouvé\n");
+//        //initItem(&pc);
+//        } else{
+//        destructionItem((Item **) chercherItem(ppl, pI->nom));
+//        //printf("Trouvé\n");
+//    }
+//}
+
 //fonction pour detruire un Inventaire
 void destructionListe(Inventaire **ppl){
     if(*ppl){       // protection contre les destructions de pointeur null

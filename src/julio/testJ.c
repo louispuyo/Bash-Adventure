@@ -17,7 +17,7 @@ void initialisation(){
     Entity *e,*e2;
     initEnt(&e);
     *e=selectionP();
-    initSlime(&e2);
+    initLizard(&e2);
     battlePhase(&e,&e2);
     system("PAUSE");
 

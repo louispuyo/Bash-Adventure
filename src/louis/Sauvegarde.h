@@ -1,11 +1,21 @@
 // Louis 25/11 //
 // description : Sauvegarder et Charger une Partie //
 // Note: changer les chemins de entity.h apres le merge des branches //
+#ifndef Sauvegarde
+#define Sauvegarde
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "../julio/entity.h"
 #include "utils.h"
+
+
+
+
+
+
+
+
 
 
 #define _PATH_SAUV_ "../../res/sauvegardes/" // chemin sauvegarde
@@ -78,7 +88,8 @@ char* charger_partie(char *filename)
 {
     char *chemin_fichier = concat(_PATH_SAUV_, filename); // from utils.h
     FILE *file = NULL;
-    char *Conteneur = malloc_p(_TAILLE_MAX_ * sizeof(char)); // from utils.h
+    char *Conteneur;  
+    malloc_p(_TAILLE_MAX_ * sizeof(Conteneur)); // from utils.h
    
     file = fopen(chemin_fichier, "r"); 
 
@@ -149,9 +160,12 @@ void menu_sauvegarde(char *nom,
 
 
 
-int main(int argc, char const *argv[])
-{
+// int main(int argc, char const *argv[])
+// {
 
 
-    menu_sauvegarde("louis", "perso de test", 100, 100, 0, 1, 100, 0, 50, 200); // exemple
-    return 0;
+//     menu_sauvegarde("louis", "perso de test", 100, 100, 0, 1, 100, 0, 50, 200); // exemple
+//     return 0;
+// }
+
+#endif // Sauvegarde

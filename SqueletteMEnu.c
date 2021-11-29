@@ -38,6 +38,7 @@ int main(void)
          case '3':
             printf("Quitter\n");
             break;
+            exit(EXIT_SUCCESS);
 
          default:
             printf("Choix errone\n");

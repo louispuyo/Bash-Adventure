@@ -4,9 +4,12 @@
 
 
 
+
 int main(int argc, char *argv[])
 {
-  int plateau[50][100]; // le tableau 2D représentant le plateau de jeu
+     				/* Start curses mode 		  */
+
+  int plateau[50][100]; // le tableau 2D reprï¿½sentant le plateau de jeu
   int hauteur, largeur; // taille utile
   int blanc, noir;
   int ligne, colonne; // indices pour parcourir le tableau
@@ -52,6 +55,8 @@ printf ("_______________________________________________________________________
        printf("\n");
   }
 
-  system("PAUSE");   // Le programme se met en pause
-  return 0;          // Le programme renvoie le nombre 0 puis s'arrête
+  system("PAUSE");
+//   getchar(); // equivalent linux
+     // Le programme se met en pause
+  return 0;          // Le programme renvoie le nombre 0 puis s'arrï¿½te
 }

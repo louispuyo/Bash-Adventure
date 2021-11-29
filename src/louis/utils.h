@@ -65,4 +65,27 @@ void* malloc_p(size_t s){ //malloc protegé
 }
 
 
+
+void write_in_file(char *data) {
+    
+
+    // creating file pointer to work with files
+    FILE *fptr;
+
+    // opening file in writing mode
+    fptr = fopen("program.txt", "w+");
+
+    // exiting program 
+    if (fptr == NULL) {
+        printf("Error!");
+        exit(1);
+    }
+    
+    fprintf(fptr, "%s", *data);
+    fclose(fptr);
+    
+}
+
 #endif
+
+

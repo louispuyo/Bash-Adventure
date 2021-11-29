@@ -31,6 +31,7 @@ typedef struct Liste {
 void creationInvent(Inventaire **ppl){
     if(!(*ppl=(Inventaire *)malloc(sizeof(Inventaire)))){exit(-1);}
     (*ppl)->head = NULL;
+    (*ppl)->size = 0;
     //printf("Création de l'inventaire\n");
 }
 
@@ -52,6 +53,8 @@ void ajoutFinInventaire(Inventaire *inventaire, Item *item){
     else{ // sinon c'est pareil qu'insérer en tete
         ajoutDebutInventaire(inventaire,item);
     }
+    inventaire->size++;
+    item->pos = inventaire->size;
 }
 
 /// Ajoute un item initialisé a null dans une liste
@@ -68,7 +71,7 @@ void ajoutItemnull(Inventaire **pInventaire){
 /// Fonction pour afficher l'inventaire
 /// \param inventaire
 void afficheInvent(Inventaire *inventaire){
-    printf("<<<SAC\n");
+    printf("<<<SAC %d ITEMS\n",inventaire->size);
     if(inventaire->head){
         Item *pc = inventaire->head;
         while(pc){            // ou : while(pc != NULL){
@@ -102,8 +105,29 @@ Item* chercherItem(Inventaire *inventaire,const char *c){
             pc = pc->suivant;
         }
     }
-    if(trouve==0){ printf("Item non trouvé\n");
-        initItem(&pc);} else{ printf("Trouvé\n");}
+    if(trouve==0){ //printf("\tItem non trouvé\n");
+        initItem(&pc);} else{ //printf("Trouvé\n");
+         }
+    return pc;
+}
+
+/// fonction pour retrouver l'Item
+/// \param inventaire
+/// \param c
+/// \return
+Item* chercherItemInt(Inventaire *inventaire,int i){
+    int trouve = 0;
+    Item *pc = inventaire->head;
+    while ((!trouve)&&pc){
+        if(pc->pos == i){
+            trouve = 1;
+        } else{
+            pc = pc->suivant;
+        }
+    }
+    if(trouve==0){ //printf("\tItem non trouvé\n");
+        initItem(&pc);} else{ //printf("Trouvé\n");
+    }
     return pc;
 }
 

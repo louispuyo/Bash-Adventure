@@ -43,6 +43,7 @@ struct Entity {
 #define LVL_MAX int 100;
 #define MONEY_MIN int 0;
 #define MONEY_MAX int 100;
+#define INV_MAX int 5;
 //--------------------------------------------------------------------------//
 
 //POUR ENTITY----------------------------------------------------------------//
@@ -104,7 +105,7 @@ void affIt(Entity *entity,int i,int full){
     printf("<<<STATS\n");
     if(i>=0){
         if (full==1)printf("\tentity->nom = ");
-        printf("\t%s\n",entity->nom);
+        printf("\t\"%s\"\n",entity->nom);
         if(i>=1){
             if (full==1)printf("\tentity->description = ");
             printf("\tTYPE %s\n",entity->des);
@@ -202,10 +203,25 @@ void modItSpeed(Entity **pEntity,int ptrx,int ptry){
     (*pEntity)->speed_y = ptry;
 }
 
-void give(Entity **pEntity,Item *pItem){
+/// Fonction qui attribue un item a une entité
+/// \param pEntity
+/// \param pItem
+void giveItem(Entity **pEntity,Item *pItem){
     ajoutFinInventaire((*pEntity)->inventaire,pItem);
 }
 
+/// Fonction qui redistribue un item et autres a une entité après combat
+/// \param pEntity
+/// \param pItem
+void loot(Entity **from,Entity **to){
+    if((*from)->inventaire->head){
+        ajoutFinInventaire((*to)->inventaire,(*from)->inventaire->head);
+    }
+    printf("\"%s\" GAGNE %d XP %d OR\n",(*to)->nom,(*from)->xp,(*from)->money);
+    affIt((*to),1,0);
+    (*to)->xp += (*from)->xp;
+    (*to)->money += (*from)->money;
+}
 //--------------------------------------------------------------------------//
 ///Fonction qui appelle un pointeur de fonction pour utiliser l'item
 /// \param pItem//A REVOIR

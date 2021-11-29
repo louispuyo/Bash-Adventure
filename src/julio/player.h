@@ -28,11 +28,11 @@ void funcUp(char **name) {
 #define MONEY_MIN int 0;
 #define MONEY_MAX int 100;
 //POUR PLAYER---------------------------------------------------------------//
-/// Initialise un Mob de type Slime
+/// Initialise un Chevalier
 /// \param pEntity
 void initWarrior(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"JEAN\"");
+    modItName(pEntity,"JEAN");
     modItDes(pEntity,"\"CHEVALIER\"");//par exemple
     modItPv(pEntity,10);
     modItPvMax(pEntity,10);
@@ -41,14 +41,14 @@ void initWarrior(Entity **pEntity){
     modItMoney(pEntity,5);
     modItAtk(pEntity,2);
     modItDef(pEntity,2);
-    give(pEntity,InitSword());
-    give(pEntity,InitWaterMagic());
+    giveItem(pEntity,InitSword());
+    giveItem(pEntity,InitWaterMagic());
 }
-/// Initialise un Mob de type Lezard
+/// Initialise un Mage
 /// \param pEntity
 void initWizard(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"HARRY\"");
+    modItName(pEntity,"HARRY");
     modItDes(pEntity,"\"MAGE\"");
     modItPv(pEntity,10);
     modItPvMax(pEntity,10);
@@ -58,11 +58,11 @@ void initWizard(Entity **pEntity){
     modItAtk(pEntity,3);
     modItDef(pEntity,1);
 }
-/// Initialise un Mob de type Loup
+/// Initialise un Bandit
 /// \param pEntity
 void initBandit(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"RINALDO\"");
+    modItName(pEntity,"RINALDO");
     modItDes(pEntity,"\"BANDIT\"");
     modItPv(pEntity,10);
     modItPvMax(pEntity,10);
@@ -83,7 +83,7 @@ char* stats(int i){
     printf("VOTRE NOM?\n");
     scanf("%s",pName);funcUp(&pName);
     do {
-        printf("%s CHOISSISEZ VOTRE CLASSE IL Y A 3 CLASSES\n"
+        printf("\"%s\" CHOISSISEZ VOTRE CLASSE IL Y A 3 CLASSES\n"
                "    [1]:CHEVALIER\n"
                "    [2]:MAGE\n"
                "    [3]:BANDIT\n",pName);

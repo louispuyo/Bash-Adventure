@@ -25,7 +25,7 @@
 /// \param pEntity
 void initSlime(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"SLIME\"");
+    modItName(pEntity,"SLIME");
     modItDes(pEntity,"\"Full of goo\"");
     modItPv(pEntity,5);
     modItPvMax(pEntity,5);
@@ -41,7 +41,7 @@ void initSlime(Entity **pEntity){
 /// \param pEntity
 void initLizard(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"LEZARD\"");
+    modItName(pEntity,"LEZARD");
     modItDes(pEntity,"\"Full of scales\"");
     modItPv(pEntity,5);
     modItPvMax(pEntity,5);
@@ -55,7 +55,7 @@ void initLizard(Entity **pEntity){
 /// \param pEntity
 void initWolf(Entity **pEntity){
     initEnt(pEntity);
-    modItName(pEntity,"\"LOUP\"");
+    modItName(pEntity,"LOUP");
     modItDes(pEntity,"\"Full of furr\"");
     modItPv(pEntity,5*3);
     modItPvMax(pEntity,5*3);

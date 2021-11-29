@@ -14,14 +14,15 @@ typedef struct Item Item;//Struct Item
 struct Item {
     char *nom;//nom de l'Item
     char *des;//description de l'Item
-    int place;//niveau d'encombrement de l'item 1=léger 2=moyen 3=lourd
+    int poids;//niveau d'encombrement de l'item 1=léger 2=moyen 3=lourd
     void (*funcItem)(int i);//pointeur sur
     // fonction
     int DEG;//Dégats de l'item
+    int pos;//position de l'item
     Item *suivant;
 };
 //CONSTANTES----------------------------------------------------------------//
-#define poids [3]{"zero","leger","moyen","lourd"};//constantes des poids
+#define poid [3]{"zero","leger","moyen","lourd"};//constantes des poids
 //MENU UTILISATION----------------------------------------------------------//
 void menuIte(int i){
     switch (i) {
@@ -55,8 +56,9 @@ void initItem(Item **pItem){
     if(!(*pItem=(Item*) malloc(sizeof(Item)))){ exit(-1);}
     (*pItem)->nom     = 0;
     (*pItem)->des     = 0;
-    (*pItem)->place   = 0;
+    (*pItem)->poids   = 0;
     (*pItem)->DEG   = 0;
+    (*pItem)->pos = 0;
     (*pItem)->suivant = NULL;
     (*pItem)->funcItem = menuIte;
 //    printf("InitItem\n");
@@ -68,14 +70,16 @@ void initItem(Item **pItem){
 
 //fonction pour afficher
 void afficheItem(Item *item,int i,int full){
-    printf("\t<<<ITEM\n");
+    printf("\t<<<ITEM");
     if(i>=0) {
+        if (full==1)printf("\titem->slot : ");
+        printf("\tSLOT %d\n", item->pos);
         if (full==1)printf("\titem->nom : ");
         printf("\t%s\n", item->nom);
         if (full==1)printf("\titem->des : ");
         printf("\t%s\n", item->des);
         if (full==1)printf("\titem->place : ");
-        printf("\t%d KG\n", item->place);
+        printf("\t%d KG\n", item->poids);
         if (full==1)printf("\titem->DEGATS : ");
         printf("\t+ %d ATK\n", item->DEG);
         //if(item->suivant){ printf("suivant : %s\n",item->suivant->nom);}
@@ -97,8 +101,8 @@ void modItemDes(Item **pItem,char *ptr){
     (*pItem)->des = ptr;
 }
 
-void modItemPlace(Item **pItem,int i){
-    (*pItem)->place = i;
+void modItemPoids(Item **pItem, int i){
+    (*pItem)->poids = i;
 }
 void modItemDeg(Item **pItem,int i){
     (*pItem)->DEG = i;
@@ -110,7 +114,7 @@ Item* InitSword(){
     initItem(&pItem);
     modItemName(&pItem,"GALATINE");
     modItemDes(&pItem,"EPEE");
-    modItemPlace(&pItem,2);
+    modItemPoids(&pItem, 2);
     modItemDeg(&pItem,2);
 }
 
@@ -119,7 +123,7 @@ Item* InitWaterMagic(){
     initItem(&pItem);
     modItemName(&pItem,"SPLASHARUS");
     modItemDes(&pItem,"MAGIE");
-    modItemPlace(&pItem,0);
+    modItemPoids(&pItem, 0);
     modItemDeg(&pItem,1);
 }
 Item* InitKnife(){
@@ -127,7 +131,7 @@ Item* InitKnife(){
     initItem(&pItem);
     modItemName(&pItem,"APAIN");
     modItemDes(&pItem,"COUTEAU");
-    modItemPlace(&pItem,1);
+    modItemPoids(&pItem, 1);
     modItemDeg(&pItem,1);
 }
 
@@ -136,7 +140,7 @@ Item* InitRage(){
     initItem(&pItem);
     modItemName(&pItem,"RAGE");
     modItemDes(&pItem,"OMBRE");
-    modItemPlace(&pItem,2);
+    modItemPoids(&pItem, 2);
     modItemDeg(&pItem,0);
 }
 //POINTEUR SUR FONCTION------------------------------------------------------//

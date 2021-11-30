@@ -81,7 +81,8 @@ void write_in_file(char *data) {
         exit(1);
     }
     
-    fprintf(fptr, "%s", *data);
+    fputs("Salut les Zér0s\nComment allez-vous ?", fptr);
+
     fclose(fptr);
     
 }

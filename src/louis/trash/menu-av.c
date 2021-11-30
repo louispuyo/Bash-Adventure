@@ -82,10 +82,12 @@ int main(int argc, char const *argv[])
         case 10: /* Enter */
         {
 
-         
+          endwin();
+          
         system("./choose_perso");
+        exit(0);
         break;
-        // exit(0);
+        
             
         }
                     // refresh();

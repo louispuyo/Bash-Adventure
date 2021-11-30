@@ -2,6 +2,7 @@
 #include <locale.h>
 #include "menugame.h"
 #include "../julio/player.h"
+#include "chargerPartie.h"
 
 
 #define _MENU_
@@ -52,6 +53,7 @@ int main (int argc, char *argv[])
             {
                 menu_ret2 = print_menu (6, 22, 4, 15,
                                         "SELECT GAME", alts2, 1);
+                
             }
             while (menu_ret2 != 4);
         }

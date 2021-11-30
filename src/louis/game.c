@@ -1,6 +1,9 @@
 #include <curses.h>
 #include <stdlib.h>
 #include "../julio/player.h"
+#include "../julio/actions.h"
+#include "Sauvegarde.h"
+#include "chargerPartie.h"
 
 #define HERBES  	  ' '
 #define EMPTY     ' '
@@ -19,11 +22,14 @@ int main(void)
 {
     int y, x;
     int ch;
-
-
+    Entity *e1  = malloc(sizeof(*e1));
+    Entity *e2  = malloc(sizeof(*e2));
+    initBandit(&e1);
+    initWizard(&e2);
     // INIT PLAYER 
     
-
+    Entity *Player = malloc(sizeof(*Player));
+     *Player = txtToEntity();
     
     /* initialize curses */
 
@@ -49,6 +55,7 @@ int main(void)
 
 	mvaddch(y, x, PLAYER);
 	move(y, x);
+    // menuAttack(&e1, &e2, 2);
 	refresh();
 
 	ch = getch();

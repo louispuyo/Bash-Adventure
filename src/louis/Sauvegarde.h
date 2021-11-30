@@ -18,10 +18,10 @@
 
 
 
-#define _PATH_SAUV_ "../../res/sauvegardes/" // chemin sauvegarde
-#define _FILENAME_ "sauvegarde.txt"
+#define _PATH_SAUV_ "" // chemin sauvegarde
+#define _FILENAME_ "sauv1.txt"
 #define _TAILLE_MAX_ 1000
-#define _SEPARATOR_ "|"
+#define _SEPARATOR_ ","
 
 
 /// \param nom
@@ -61,18 +61,28 @@ void sauver_partie(char *nom,
     if(file != NULL){
 
 
-    fprintf(file, "nom: %s %s", nom, _SEPARATOR_);
-    fprintf(file, "des: %s %s", des, _SEPARATOR_);
-    fprintf(file, "pv: %d %s", pv, _SEPARATOR_);
-    fprintf(file, "pvMax: %d %s", pvMax, _SEPARATOR_);
-    fprintf(file, "xp: %d %s", xp, _SEPARATOR_);
-    fprintf(file, "level: %d %s", level, _SEPARATOR_);
-    fprintf(file, "money: %d %s", money, _SEPARATOR_);
-    fprintf(file, "action: %d %s", action, _SEPARATOR_);
-    fprintf(file, "atk: %d %s", atk, _SEPARATOR_);
-    fprintf(file, "def: %d %s", def, _SEPARATOR_);
+    fprintf(file, "%s %s", nom, _SEPARATOR_);
+    fprintf(file, "%s %s", des, _SEPARATOR_);
+    fprintf(file, "%d %s", pv, _SEPARATOR_);
+    fprintf(file, "%d %s", pvMax, _SEPARATOR_);
+    fprintf(file, "%d %s", xp, _SEPARATOR_);
+    fprintf(file, "%d %s", level, _SEPARATOR_);
+    fprintf(file, "%d %s", money, _SEPARATOR_);
+    fprintf(file, "%d %s", action, _SEPARATOR_);
+    fprintf(file, "%d %s", atk, _SEPARATOR_);
+    fprintf(file, "%d %s", def, "");
+    // fprintf(file, "nom: %s %s", nom, _SEPARATOR_);
+    // fprintf(file, "des: %s %s", des, _SEPARATOR_);
+    // fprintf(file, "pv: %d %s", pv, _SEPARATOR_);
+    // fprintf(file, "pvMax: %d %s", pvMax, _SEPARATOR_);
+    // fprintf(file, "xp: %d %s", xp, _SEPARATOR_);
+    // fprintf(file, "level: %d %s", level, _SEPARATOR_);
+    // fprintf(file, "money: %d %s", money, _SEPARATOR_);
+    // fprintf(file, "action: %d %s", action, _SEPARATOR_);
+    // fprintf(file, "atk: %d %s", atk, _SEPARATOR_);
+    // fprintf(file, "def: %d %s", def, "");
     // fprintf(file, "suivant: %s %s", suivant, _SEPARATOR_);
-    fprintf(file, "nom: %s %s", nom, _SEPARATOR_);
+    // fprintf(file, "nom: %s %s", , "");
 
     fclose(file);
     printf("[i] Vous Avez sauvez la Partie ! \n");

@@ -84,7 +84,8 @@ int main(int argc, char const *argv[])
 
          
         system("./choose_perso");
-
+        break;
+        // exit(0);
             
         }
                     // refresh();

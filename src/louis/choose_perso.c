@@ -4,8 +4,10 @@
 
 int main(int argc, char const *argv[])
 {
-    Entity *Player;
-    *Player = selectionP();
+ 
+   Entity *Player = malloc(sizeof(Entity));
+   selectionP();
+    printf("\n [i] DEBUG CHOOSE PLAYER \n");
     
 
     return 0;

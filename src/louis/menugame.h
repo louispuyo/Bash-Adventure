@@ -2,7 +2,7 @@
 #ifndef _MENU_
 #define _MENU_
 
-
+#include <stdlib.h>
 #include <curses.h>
 
 /* Calculates the length of a "string" */
@@ -45,21 +45,7 @@ int
 print_menu (int sty, int x, int alts, int width,
             char title[], char entries[][100], int start)
 {
-    /* "i" will be used for printing out a character several times
-       in a row by using for-loops. Later it will also be used
-       to point to elements in "temparray" in order to assign some
-       spaces after the currently selected word, so that the
-       entire menu cell will be highlighted. */
-    /* "j" will be used once by a for-loop when "i" is used elsewhere. */
-    /* "k" is used to point to the different "entries" strings. */
-    /* "blankspace1" and 2 are used for formatting the strings
-       in the menu cells. */
-    /* "currow" contains the currently highlighted row in the menu. */
-    /* "y" will be used to move the cursor in the y-axis. */
-    /* "key" will hold the keycode of the last key you pressed,
-       in order to later compare it for different actions. */
-    /* "temparray" will as previously stated contain the currently
-       selected word in order to highlight it. */
+
     int i, j, k, blankspace1, blankspace2, currow = start, y = sty, key;
     char temparray[100];
 
@@ -198,6 +184,11 @@ print_menu (int sty, int x, int alts, int width,
 
             else
                 currow++;
+        }
+        else if (key == 10)
+        { // enter
+        system("./choose_perso");
+
         }
     }
     while (key != '\n' && key != '\r' && key != 459);

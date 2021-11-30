@@ -33,15 +33,16 @@ int main (int argc, char *argv[])
     {   /* menu_ret is sent as the start value, to make the last entry */
         /* highlighted when you return to the main menu.               */
         menu_ret = print_menu (2, 5, 3, 15,
-                               "MAIN MENU", alts, menu_ret);
+                               "BASH ADVENTURE MENU", alts, menu_ret);
 
         if (menu_ret == 1)  /* This is just an example program. */
         {                   /* You can't start an actual game.  */
-            mvprintw (5, 23, "Lets Start The Game");
+            mvprintw (5, 23, " Lets Start The Game");
             
             getch();
             endwin();
             system("./game");
+            exit(0);
             
         }
 
@@ -50,7 +51,7 @@ int main (int argc, char *argv[])
             do                  /* the main menu. */
             {
                 menu_ret2 = print_menu (6, 22, 4, 15,
-                                        "SELECT SLOT", alts2, 1);
+                                        "SELECT GAME", alts2, 1);
             }
             while (menu_ret2 != 4);
         }

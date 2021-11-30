@@ -1,4 +1,6 @@
 #include <menu.h>
+#include <stdio.h>
+
 #include <string.h>
 #include <stdlib.h>
 #include <ncurses.h>
@@ -22,7 +24,9 @@ char *choices[] = {
     "PERSO 7",
     "Exit",
 };
-int main()
+
+int main(int argc, char const *argv[])
+
 {
     ITEM **my_items;
 
@@ -78,17 +82,12 @@ int main()
         case 10: /* Enter */
         {
 
-            move(20, 0);
-            clrtoeol();
-            mvprintw(10, 0, current_item(my_menu)->name.str);
-            mvprintw(20, 0, "Item selected is : %s",
-                     item_name(current_item(my_menu)));
-            const char *name_cur_item = current_item(my_menu)->name.str;
-        
+         
+        system("./choose_perso");
 
-            break;
+            
         }
-                    refresh();
+                    // refresh();
 
         break;
         }
@@ -100,22 +99,6 @@ int main()
     free_menu(my_menu);
     endwin();
     refresh();
-    load_item(name_cur_item);
+    
 
-}
-
-void load_item(char *nom)
-{
-
-    Entity *player;
-
-
-
-    // modItemName(&itemTest, nom);
-
-  *player = selectionP();
-
-    // write_in_file("hello");
-
-    // afficheItem(itemTest, 0, 10);
 }

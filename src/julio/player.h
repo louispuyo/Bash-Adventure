@@ -83,9 +83,10 @@ char* stats(int i){
  Entity selectionP(){
     char *pName= (char *)malloc(sizeof(char ));
     int choix[]={1,2,3};
-    int i=0;
-    printf("VOTRE NOM?\n");
-    scanf("%s",pName);funcUp(&pName);
+    int i=0;    
+    printf("VOTRE NOM : ");
+    fgets (pName, 60, stdin);
+    funcUp(&pName);
     do {
         printf("\"%s\" CHOISSISEZ VOTRE CLASSE IL Y A 3 CLASSES\n"
                "    [1]:CHEVALIER\n"

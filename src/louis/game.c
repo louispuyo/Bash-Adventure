@@ -24,7 +24,7 @@ int main(void)
     // INIT PLAYER 
     
 
-
+    
     /* initialize curses */
 
     initscr();
@@ -132,24 +132,26 @@ void draw_map(void)
 
     /* background */
 
-    for (y = 5; y < LINES/2; y++) {
-	// mvhline(y, 50, HERBES, COLS);
+    for (y = 5; y < LINES; y++) {
+	mvhline(y, 5, HERBES, COLS);
     }
 
 
-    for (x = COLS/2; x<(COLS/2)+1; x++)
+    for (x = COLS/3; x<(COLS/4)+1; x++)
     {
-        mvhline(x, 0, TRAI, COLS);
+        mvhline(0, x, TRAI, COLS);
     }
 
     /* MONTAGNE */
 
-    for (x = COLS / 2; x < (COLS/2)+1; x++) {
+    for (x = COLS / 3; x < (COLS/3)+1; x++) {
 	mvvline(0, x, TRAI, LINES);
     }
 
     // DISP
     affIt(player_1, 1, 10);
+    afficheInvent(player_1->inventaire);
+
 
     // mvhline(LINES / 4, 0, HERBES, COLS);
 

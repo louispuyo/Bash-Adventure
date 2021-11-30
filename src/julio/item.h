@@ -71,22 +71,22 @@ void initItem(Item **pItem){
 
 //fonction pour afficher
 void afficheItem(Item *item,int i,int full){
-    printw("\t<<<ITEM");
+    printf("\t<<<ITEM");
     if(i>=0) {
-        if (full==1)printw("\titem->slot : ");
-        printw("\tSLOT %d\n", item->pos);
-        if (full==1)printw("\titem->nom : ");
-        printw("\t%s\n", item->nom);
-        if (full==1)printw("\titem->des : ");
-        printw("\t%s\n", item->des);
-        if (full==1)printw("\titem->place : ");
-        printw("\t%d KG\n", item->poids);
+        if (full==1)printf("\titem->slot : ");
+        printf("\tSLOT %d\n", item->pos);
+        if (full==1)printf("\titem->nom : ");
+        printf("\t%s\n", item->nom);
+        if (full==1)printf("\titem->des : ");
+        printf("\t%s\n", item->des);
+        if (full==1)printf("\titem->place : ");
+        printf("\t%d KG\n", item->poids);
         if(strcmp(item->des,"SOINS") == 0 ){
-            if (full==1)printw("\titem->SOINS : ");
-            printw("\t+ %d VIE\n", item->DEG);
+            if (full==1)printf("\titem->SOINS : ");
+            printf("\t+ %d VIE\n", item->DEG);
         } else{
-            if (full==1)printw("\titem->DEGATS : ");
-            printw("\t+ %d ATK\n", item->DEG);
+            if (full==1)printf("\titem->DEGATS : ");
+            printf("\t+ %d ATK\n", item->DEG);
         }
         //if(item->suivant){ printf("suivant : %s\n",item->suivant->nom);}
     }

@@ -105,32 +105,32 @@ void initEnt(Entity **pEntity) {
 //fonction pour ajouter a la fin
 //fonction pour afficher (penser a faire une version courte)
 void affIt(Entity *entity,int i,int full){
-    printw("<<<STATS\n");
+    printf("<<<STATS\n");
     if(i>=0){
-        if (full==1)printw("\tentity->nom = ");
-        printw("\t\"%s\"\n",entity->nom);
+        if (full==1)printf("\tentity->nom = ");
+        printf("\t\"%s\"\n",entity->nom);
         if(i>=1){
-            if (full==1)printw("\tentity->description = ");
-            printw("\tTYPE %s\n",entity->des);
-            if (full==1)printw("\tentity->pv = ");
-            printw("\t%d PV\n",entity->pv);
-            if (full==1)printw("\tentity->level = ");
-            printw("\tLVL %d\n",entity->level);
-            if (full==1)printw("\tentity->money = ");
-            printw("\t%d OR\n",entity->money);
-            if (full==1)printw("\tentity->xp = ");
-            printw("\t%d XP\n",entity->xp);
+            if (full==1)printf("\tentity->description = ");
+            printf("\tTYPE %s\n",entity->des);
+            if (full==1)printf("\tentity->pv = ");
+            printf("\t%d PV\n",entity->pv);
+            if (full==1)printf("\tentity->level = ");
+            printf("\tLVL %d\n",entity->level);
+            if (full==1)printf("\tentity->money = ");
+            printf("\t%d OR\n",entity->money);
+            if (full==1)printf("\tentity->xp = ");
+            printf("\t%d XP\n",entity->xp);
             if(i>=2){
-                if (full==1)printw("\tentity->pvMax = ");
-                printw("\t%d PV MAX\n",entity->pvMax);
-                if (full==1)printw("\tentity->atk = ");
-                printw("\t%d ATQ\n",entity->atk);
-                if (full==1)printw("\tentity->def = ");
-                printw("\t%d DEF\n",entity->def);
+                if (full==1)printf("\tentity->pvMax = ");
+                printf("\t%d PV MAX\n",entity->pvMax);
+                if (full==1)printf("\tentity->atk = ");
+                printf("\t%d ATQ\n",entity->atk);
+                if (full==1)printf("\tentity->def = ");
+                printf("\t%d DEF\n",entity->def);
             }
         }
     }
-    printw("STATS>>>\n");
+    printf("STATS>>>\n");
 }
 //fonction pour supprimer au debut
 //fonction pour supprimer a la fin

@@ -8,5 +8,5 @@ add_executable(Bash_Adventure src/julio/entity.h src/julio/mob.h src/julio/item.
         src/julio/player.h src/julio/monde.h)
 
 if(FALSE) # fake a block comment
-    add_executable(src/main.c map1.c)
+    add_executable(src/main.c map1.c src/julio/monde.h)
 endif()
